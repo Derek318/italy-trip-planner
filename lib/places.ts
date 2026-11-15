@@ -7,7 +7,6 @@
 import { z } from "zod";
 import raw from "@/data/italy.json";
 import factsFile from "@/data/place-facts.json";
-import { distanceKm } from "@/lib/distance";
 import { PlaceFactsFileSchema, RawPlaceSchema, type PlaceFacts, type RawPlace } from "@/lib/schemas";
 
 /** Minutes from midnight. `close` can exceed 1440 when a place closes after midnight. */
@@ -68,9 +67,6 @@ const DEFAULT_DURATION: Record<string, number> = {
 };
 
 const MIN_RATING = 3.0;
-
-/** A place this far from everything else in its city has bad coordinates. */
-const OUTLIER_KM = 30;
 
 const DAY_KEYS = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"] as const; // index = Date.getDay()
 
@@ -151,39 +147,11 @@ function normalizePlace(r: RawPlace, facts: PlaceFacts | undefined): Place {
   };
 }
 
-/**
- * Moves places whose coordinates are far from everything else in their city to the middle
- * of their neighborhood (or city) and says so. Catches typos like a Milan market listed near Verona.
- */
-function fixCoordinateOutliers(places: Place[]): void {
-  for (const p of places) {
-    const others = places.filter((o) => o !== p && o.city === p.city);
-    if (others.length < 2) {
-      continue;
-    }
-    const nearestKm = Math.min(...others.map((o) => distanceKm(o, p)));
-    if (nearestKm <= OUTLIER_KM) {
-      continue;
-    }
-
-    const sameNeighborhood = others.filter((o) => p.neighborhood && o.neighborhood === p.neighborhood);
-    const reference = sameNeighborhood.length ? sameNeighborhood : others;
-    p.lat = reference.reduce((s, o) => s + o.lat, 0) / reference.length;
-    p.lon = reference.reduce((s, o) => s + o.lon, 0) / reference.length;
-    p.notes.push(
-      `Listed location was ${Math.round(nearestKm)} km from anything else in ${p.city}; ` +
-        `mapped to ${sameNeighborhood.length ? `the ${p.neighborhood} neighborhood` : "the city center"} instead.`,
-    );
-  }
-}
-
 function loadPlaces(): Place[] {
   // Validate both files at load time: malformed data fails loudly instead of leaking through.
   const rawPlaces = z.array(RawPlaceSchema).parse(raw);
   const facts = new Map(PlaceFactsFileSchema.parse(factsFile).places.map((f) => [f.id, f]));
-  const places = rawPlaces.map((r) => normalizePlace(r, facts.get(r.id)));
-  fixCoordinateOutliers(places);
-  return places;
+  return rawPlaces.map((r) => normalizePlace(r, facts.get(r.id)));
 }
 
 export const PLACES: Place[] = loadPlaces();

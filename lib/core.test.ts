@@ -1,7 +1,7 @@
 import { describe, expect, test } from "vitest";
 import raw from "@/data/italy.json";
 import { PLACES, PLACES_BY_ID, type Hours } from "@/lib/places";
-import { BASE_CITIES, baseCenter, candidatesFor, distanceKm, travelBetween, travelMinutes } from "@/lib/geo";
+import { BASE_CITIES, candidatesFor, distanceKm, travelBetween, travelMinutes } from "@/lib/geo";
 import { dropInvalidStops, errorReport, scheduleDay, scheduleTrip } from "@/lib/schedule";
 import { alternativesFor } from "@/lib/swap";
 import type { Plan } from "@/lib/schemas";
@@ -57,11 +57,6 @@ describe("extracted place facts", () => {
 });
 
 describe("data cleanup", () => {
-  test("a location far from the rest of its city is moved back, with a note", () => {
-    const brera = place("place_059");
-    expect(distanceKm(brera, baseCenter("Milan"))).toBeLessThan(5);
-    expect(brera.notes.join()).toMatch(/km from anything else in Milan/);
-  });
   test("the low-rated tourist trap is excluded", () => {
     expect(place("place_025").excludedReason).toMatch(/2.1/);
   });

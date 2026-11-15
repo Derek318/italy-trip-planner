@@ -1,7 +1,7 @@
 import { describe, expect, test } from "vitest";
 import raw from "@/data/italy.json";
 import { PLACES, PLACES_BY_ID, parseHours, parseOpenMonths, type Hours } from "@/lib/places";
-import { candidatesFor, detectBases } from "@/lib/geo";
+import { candidatesFor, detectBases, distanceKm, travelBetween, travelMinutes } from "@/lib/geo";
 import { dropInvalidStops, errorReport, scheduleDay, scheduleTrip } from "@/lib/schedule";
 import { alternativesFor } from "@/lib/swap";
 import type { Plan } from "@/lib/schemas";
@@ -140,5 +140,16 @@ describe("fallback and swaps", () => {
       swapped.days[0].stops[1].place_id = alt.place.id;
       expect(errors(scheduleDay(swapped.days[0], TUESDAY, ["Florence"]))).toEqual([]);
     }
+  });
+});
+
+describe("travel times", () => {
+  const p = (id: string) => PLACES_BY_ID.get(id)!;
+  test("uses the routed walking time within a city", () => {
+    expect(travelBetween(p("place_001"), p("place_018"))).toBe(25); // Colosseum -> Trevi on foot
+  });
+  test("falls back to the distance estimate between cities", () => {
+    const florenceToSiena = travelBetween(p("place_026"), p("place_038"));
+    expect(florenceToSiena).toBe(travelMinutes(distanceKm(p("place_026"), p("place_038"))));
   });
 });

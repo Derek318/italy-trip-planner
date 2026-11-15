@@ -4,7 +4,7 @@
 
 import { PLACES_BY_ID, formatMinutes, type Place, type Window } from "@/lib/places";
 import {
-  baseCenter, distanceKm, isBaseCity, isReachable, nearestBase, travelMinutes, type BaseCity,
+  baseCenter, distanceKm, isBaseCity, isReachable, nearestBase, travelBetween, travelMinutes, type BaseCity,
 } from "@/lib/geo";
 import type { Plan, PlannedDay } from "@/lib/schemas";
 
@@ -134,7 +134,7 @@ export function scheduleDay(planned: PlannedDay, date: string, bases: BaseCity[]
       fail("Only runs on the third weekend of the month.");
     }
 
-    const travelBefore = prev ? travelMinutes(distanceKm(prev, place)) : 0;
+    const travelBefore = prev ? travelBetween(prev, place) : 0;
     const arrive = clock + travelBefore;
     let start = earliestStart(place, arrive, weekday);
     if (start === null) {

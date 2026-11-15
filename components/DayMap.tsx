@@ -21,7 +21,9 @@ function pin(n: number) {
 function FitBounds({ points }: { points: [number, number][] }) {
   const map = useMap();
   useEffect(() => {
-    if (points.length) map.fitBounds(points, { padding: [40, 40], maxZoom: 15 });
+    if (points.length) {  
+      map.fitBounds(points, { padding: [40, 40], maxZoom: 15 });
+    } 
   }, [map, points]);
   return null;
 }

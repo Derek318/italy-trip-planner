@@ -1,5 +1,6 @@
 // Geography: distances, travel-time estimates, and which places are reachable from a base city.
 
+import walkingTimes from "@/data/walking-times.json";
 import { PLACES, type Place } from "@/lib/places";
 
 /** Cities with enough places to stay in for 3 days. Everything else is a day trip. */
@@ -17,11 +18,26 @@ export function distanceKm(a: { lat: number; lon: number }, b: { lat: number; lo
   return 2 * 6371 * Math.asin(Math.sqrt(h));
 }
 
-/** Rough door-to-door minutes. Deliberately conservative: better a loose plan than a missed train. */
+/** Rough door-to-door minutes from straight-line distance. Used when we have no routed time. */
 export function travelMinutes(km: number): number {
   if (km <= 1.5) return Math.ceil((km * 1.3 / 4.5) * 60); // walk, with a detour factor
   if (km <= 25) return Math.ceil(10 + (km / 20) * 60); // metro, bus, taxi or vaporetto
   return Math.ceil(30 + (km / 90) * 60); // regional train plus getting to the station
+}
+
+/** Real walking minutes between places in the same city, precomputed by scripts/build-walking-times.ts. */
+const WALKING: Record<string, Record<string, number>> = walkingTimes.minutes;
+const MAX_WALK_MIN = 25;
+
+/**
+ * Minutes from one place to the next: the routed walking time when it is a reasonable walk,
+ * otherwise whichever is faster of walking or taking transit. Different cities use the estimate.
+ */
+export function travelBetween(a: Place, b: Place): number {
+  const walk = WALKING[a.id]?.[b.id];
+  const estimate = travelMinutes(distanceKm(a, b));
+  if (walk === undefined) return estimate;
+  return walk <= MAX_WALK_MIN ? walk : Math.min(walk, estimate);
 }
 
 function centroid(places: Place[]) {

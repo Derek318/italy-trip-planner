@@ -16,7 +16,8 @@ The split is deliberate: the LLM handles soft preferences ("two kids", "not too 
 |---|---|
 | `lib/schemas.ts` | Zod schemas for the dataset, the LLM's output and API requests |
 | `lib/places.ts` | Normalizes the messy data: parses every hours format, fills gaps with labeled defaults, documented corrections, excludes the 2.1-rated tourist trap |
-| `lib/geo.ts` | Base city detection, day-trip reach (120 km), travel-time estimates |
+| `lib/geo.ts` | Base city detection, day-trip reach (120 km), travel times |
+| `scripts/build-walking-times.ts` | One-off: real walking times for every same-city pair from the free OSRM foot router (OpenStreetMap), saved to `data/walking-times.json`. No routing calls at runtime, so swaps stay instant. Between cities, a distance-based train estimate is used |
 | `lib/schedule.ts` | Assigns times and reports errors: closed days, seasons, travel, getting back to base, repeats |
 | `lib/planner.ts` | The only file that calls the LLM (plan, repair, regenerate one day) |
 | `lib/swap.ts` | Instant swap suggestions with no LLM call, each pre-checked against the scheduler |

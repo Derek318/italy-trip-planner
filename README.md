@@ -1,36 +1,39 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Three Days in Italy
 
-## Getting Started
+A 3-day trip planner built on `italy.json` (about 100 places). Describe a trip in plain English ("Rome with my two kids, good food") and get a timed itinerary where opening hours, seasons and travel time have been checked by code.
 
-First, run the development server:
+## How it works
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+```
+request -> detect base city (code) -> filter candidates (code) -> LLM picks + orders stops
+        -> scheduler assigns times and checks them (code) -> errors? one LLM repair pass
+        -> still broken? drop the stop with a visible reason
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The split is deliberate: the LLM handles soft preferences ("two kids", "not too rushed"), and code handles hard constraints. The LLM never sets a time and can only reference place IDs from the candidate list.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+| File | Responsibility |
+|---|---|
+| `lib/schemas.ts` | Zod schemas for the dataset, the LLM's output and API requests |
+| `lib/places.ts` | Normalizes the messy data: parses every hours format, fills gaps with labeled defaults, documented corrections, excludes the 2.1-rated tourist trap |
+| `lib/geo.ts` | Base city detection, day-trip reach (120 km), travel-time estimates |
+| `lib/schedule.ts` | Assigns times and reports errors: closed days, seasons, travel, getting back to base, repeats |
+| `lib/planner.ts` | The only file that calls the LLM (plan, repair, regenerate one day) |
+| `lib/swap.ts` | Instant swap suggestions with no LLM call, each pre-checked against the scheduler |
+| `app/page.tsx` | UI: request, day tabs, swap, remove, regenerate a day, map |
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Data issues handled
 
-## Learn More
+- 38 places with no hours. Public spaces are treated as open access; anything else is flagged "confirm before going".
+- About 10 different hours formats (`Tues, Thurs-Sun 10:00-18:00`, `8am-7pm`, `8:00-01:00`, `Evenings`...). A test asserts every value in the file parses.
+- Missing visit durations get a default by type, labeled as an assumption.
+- Seasonal rules from free text (`Open April-October only`), the Brera market's third-weekend rule, a longitude that put a Milan market near Verona, a bar whose real hours were only in its description, and inconsistent tags.
 
-To learn more about Next.js, take a look at the following resources:
+## Run it
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+npm install
+echo "ANTHROPIC_API_KEY=..." > .env.local
+npm run dev
+npm test
+```

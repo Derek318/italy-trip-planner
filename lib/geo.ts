@@ -36,19 +36,12 @@ const CITY_CENTERS = new Map(
   }),
 );
 
-export function baseCenter(base: BaseCity) {
+function baseCenter(base: BaseCity) {
   return CITY_CENTERS.get(base)!;
 }
 
 export function isBaseCity(city: string): boolean {
   return BASE_CITIES.includes(city);
-}
-
-/** The base city closest to a point, used to decide where a day trip returns to. */
-export function nearestBase(point: { lat: number; lon: number }, bases: BaseCity[]): BaseCity {
-  return bases.reduce((best, b) =>
-    distanceKm(baseCenter(b), point) < distanceKm(baseCenter(best), point) ? b : best,
-  );
 }
 
 /** True if the place is in the base city or close enough for a day trip. */

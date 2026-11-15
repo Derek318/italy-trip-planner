@@ -3,16 +3,7 @@
 // The same issues it reports are sent back to the LLM to repair a plan.
 
 import { PLACES_BY_ID, formatMinutes, type Place, type Window } from "@/lib/places";
-import {
-  baseCenter,
-  distanceKm,
-  isBaseCity,
-  isReachable,
-  nearestBase,
-  travelBetween,
-  travelMinutes,
-  type BaseCity,
-} from "@/lib/geo";
+import { isBaseCity, isReachable, travelBetween, type BaseCity } from "@/lib/geo";
 import type { Plan, PlannedDay } from "@/lib/schemas";
 
 export type Severity = "error" | "warning" | "info";
@@ -47,7 +38,6 @@ const DAY_START = 9 * 60;
 const DAY_END = 24 * 60;
 const LUNCH_FROM = 12 * 60;
 const DINNER_FROM = 19 * 60;
-const HEAVY_TRAVEL_MIN = 180;
 const WEEKDAYS = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
@@ -180,23 +170,10 @@ export function scheduleDay(planned: PlannedDay, date: string, bases: BaseCity[]
     });
   }
   const last = stops.at(-1);
-  if (last && bases.length) {
-    const home = nearestBase(last.place, bases);
-    const back = last.place.city === home ? 0 : travelMinutes(distanceKm(last.place, baseCenter(home)));
-    if (last.end + back > DAY_END) {
-      dayIssues.push({
-        severity: "error",
-        message: back
-          ? `Back in ${home} after midnight (ends ${formatMinutes(last.end)}, ~${back} min return).`
-          : `Day runs past midnight (ends ${formatMinutes(last.end)}).`,
-      });
-    }
-  }
-  const travelTotal = stops.reduce((sum, s) => sum + s.travelBefore, 0);
-  if (travelTotal > HEAVY_TRAVEL_MIN) {
+  if (last && last.end > DAY_END) {
     dayIssues.push({
       severity: "warning",
-      message: `About ${Math.round(travelTotal / 60)}h of travel today.`,
+      message: `Day runs past midnight (ends ${formatMinutes(last.end)}).`,
     });
   }
   const isFoodStop = (s: ScheduledStop) =>
@@ -255,49 +232,29 @@ export function errorReport(trip: ScheduledTrip): string[] {
 }
 
 /**
- * Last resort after the LLM's repair attempt: drop stops with errors, then trim days that
- * still run too late. Guarantees the user never sees an impossible plan.
- * Returns the cleaned plan and a human-readable list of what was removed.
+ * Last resort after the LLM's repair attempt: drop every stop that still has an error, and say why.
+ * Removing a stop only makes later stops earlier, so one pass is enough.
+ * Day-level problems stay visible as issues on the day.
  */
 export function dropInvalidStops(plan: Plan, startDate: string): { plan: Plan; removed: string[] } {
+  const trip = scheduleTrip(plan, startDate);
   const removed: string[] = [];
-  const current: Plan = structuredClone(plan);
 
-  for (let guard = 0; guard < 20; guard++) {
-    const trip = scheduleTrip(current, startDate);
-    let changed = false;
-    current.days = current.days.map((day, d) => {
-      const scheduled = trip.days[d];
-      const bad = new Set(
-        scheduled.stops.filter((s) => s.issues.some((i) => i.severity === "error")).map((s) => s.place.id),
-      );
-      let stops = day.stops.filter((s) => {
-        if (bad.has(s.place_id) || !PLACES_BY_ID.has(s.place_id)) {
-          const stop = scheduled.stops.find((x) => x.place.id === s.place_id);
-          const reason = stop?.issues.find((i) => i.severity === "error")?.message ?? "unknown place";
-          removed.push(`${stop?.place.name ?? s.place_id}: ${reason}`);
-          bad.delete(s.place_id); // only drop the first occurrence of a duplicate
-          return false;
-        }
-        return true;
-      });
-      if (
-        stops.length === day.stops.length &&
-        scheduled.issues.some((i) => i.severity === "error") &&
-        stops.length
-      ) {
-        const last = scheduled.stops.at(-1)!;
-        removed.push(`${last.place.name}: ${scheduled.issues.find((i) => i.severity === "error")!.message}`);
-        stops = stops.slice(0, -1);
+  const days = plan.days.map((day, d) => {
+    for (const s of day.stops) {
+      if (!PLACES_BY_ID.has(s.place_id)) {
+        removed.push(`${s.place_id}: not in the dataset`);
       }
-      if (stops.length !== day.stops.length) {
-        changed = true;
-      }
-      return { ...day, stops };
-    });
-    if (!changed) {
-      break;
     }
-  }
-  return { plan: current, removed };
+    const valid = trip.days[d].stops.filter((stop) => {
+      const error = stop.issues.find((i) => i.severity === "error");
+      if (error) {
+        removed.push(`${stop.place.name}: ${error.message}`);
+      }
+      return !error;
+    });
+    return { ...day, stops: valid.map((stop) => ({ place_id: stop.place.id, why: stop.why })) };
+  });
+
+  return { plan: { ...plan, days }, removed };
 }

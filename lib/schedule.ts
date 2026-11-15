@@ -254,10 +254,6 @@ export function errorReport(trip: ScheduledTrip): string[] {
   return out;
 }
 
-export function errorCount(trip: ScheduledTrip): number {
-  return errorReport(trip).length;
-}
-
 /**
  * Last resort after the LLM's repair attempt: drop stops with errors, then trim days that
  * still run too late. Guarantees the user never sees an impossible plan.

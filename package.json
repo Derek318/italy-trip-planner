@@ -8,7 +8,9 @@
     "start": "next start",
     "lint": "eslint",
     "test": "vitest run",
-    "build:walking": "tsx scripts/build-walking-times.ts"
+    "build:walking": "tsx scripts/build-walking-times.ts",
+    "build:facts": "tsx --env-file=.env.local scripts/extract-place-facts.ts",
+    "format": "prettier --write ."
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^1.8.0",
@@ -32,6 +34,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "^15.5.29",
+    "prettier": "^3.6.2",
     "shadcn": "^4.23.0",
     "tailwindcss": "^4",
     "tsx": "^4.23.15",

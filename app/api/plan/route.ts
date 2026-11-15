@@ -22,7 +22,10 @@ export async function POST(req: Request) {
       return Response.json({ error: "Busy right now, try again in a minute." }, { status: 429 });
     }
     console.error(err);
-    const message = err instanceof Anthropic.APIError ? "The planner service had a problem." : String((err as Error).message);
+    const message =
+      err instanceof Anthropic.APIError
+        ? "The planner service had a problem."
+        : String((err as Error).message);
     return Response.json({ error: message }, { status: 502 });
   }
 }

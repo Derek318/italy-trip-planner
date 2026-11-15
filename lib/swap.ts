@@ -15,9 +15,17 @@ export interface Alternative {
 
 const isFood = (p: Place) => p.type === "restaurant" || p.type === "cafe";
 
-export function replaceStop(plan: Plan, dayIndex: number, stopIndex: number, placeId: string, why: string): Plan {
+export function replaceStop(
+  plan: Plan,
+  dayIndex: number,
+  stopIndex: number,
+  placeId: string,
+  why: string,
+): Plan {
   const days = plan.days.map((d, i) =>
-    i !== dayIndex ? d : { ...d, stops: d.stops.map((s, j) => (j === stopIndex ? { place_id: placeId, why } : s)) },
+    i !== dayIndex
+      ? d
+      : { ...d, stops: d.stops.map((s, j) => (j === stopIndex ? { place_id: placeId, why } : s)) },
   );
   return { ...plan, days };
 }
@@ -31,7 +39,12 @@ export function removeStop(plan: Plan, dayIndex: number, stopIndex: number): Pla
 
 /** Up to `limit` alternatives of the same kind (meal for meal, sight for sight), best first. */
 export function alternativesFor(
-  plan: Plan, startDate: string, dayIndex: number, stopIndex: number, current: Place, limit = 4,
+  plan: Plan,
+  startDate: string,
+  dayIndex: number,
+  stopIndex: number,
+  current: Place,
+  limit = 4,
 ): Alternative[] {
   const used = new Set(plan.days.flatMap((d) => d.stops.map((s) => s.place_id)));
   const date = addDays(startDate, dayIndex);
@@ -41,14 +54,18 @@ export function alternativesFor(
 
   const options: (Alternative & { score: number })[] = [];
   for (const place of candidatesFor(bases)) {
-    if (used.has(place.id) || isFood(place) !== isFood(current)) continue;
+    if (used.has(place.id) || isFood(place) !== isFood(current)) {
+      continue;
+    }
 
     const trial = replaceStop(plan, dayIndex, stopIndex, place.id, "");
     const day = scheduleDay(trial.days[dayIndex], date, bases);
     const hasError =
       day.issues.some((i) => i.severity === "error") ||
       day.stops.some((s) => s.issues.some((i) => i.severity === "error"));
-    if (hasError) continue;
+    if (hasError) {
+      continue;
+    }
 
     const km = distanceKm(current, place);
     const matchedTags = place.tags.filter((t) => preferred.has(t));

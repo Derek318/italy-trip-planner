@@ -1,7 +1,7 @@
 import { describe, expect, test } from "vitest";
 import raw from "@/data/italy.json";
-import { PLACES, PLACES_BY_ID, parseHours, parseOpenMonths, type Hours } from "@/lib/places";
-import { candidatesFor, detectBases, distanceKm, travelBetween, travelMinutes } from "@/lib/geo";
+import { PLACES, PLACES_BY_ID, type Hours } from "@/lib/places";
+import { BASE_CITIES, baseCenter, candidatesFor, distanceKm, travelBetween, travelMinutes } from "@/lib/geo";
 import { dropInvalidStops, errorReport, scheduleDay, scheduleTrip } from "@/lib/schedule";
 import { alternativesFor } from "@/lib/swap";
 import type { Plan } from "@/lib/schemas";
@@ -9,64 +9,61 @@ import type { Plan } from "@/lib/schemas";
 // 2026-11-16 is a Monday, 2026-11-17 a Tuesday.
 const MONDAY = "2026-11-16";
 const TUESDAY = "2026-11-17";
+const [SUN, MON, TUE, WED] = [0, 1, 2, 3];
 
 const day = (ids: string[]) => ({ theme: "t", stops: ids.map((place_id) => ({ place_id, why: "" })) });
 const errors = (d: ReturnType<typeof scheduleDay>) =>
-  [...d.issues, ...d.stops.flatMap((s) => s.issues)].filter((i) => i.severity === "error").map((i) => i.message);
-const fixed = (h: Hours) => {
-  if (h.kind !== "fixed") throw new Error(`expected fixed hours, got ${h.kind}`);
+  [...d.issues, ...d.stops.flatMap((s) => s.issues)]
+    .filter((i) => i.severity === "error")
+    .map((i) => i.message);
+const place = (id: string) => PLACES_BY_ID.get(id)!;
+const week = (id: string) => {
+  const h: Hours = place(id).hours;
+  if (h.kind !== "fixed" && h.kind !== "approximate") {
+    throw new Error(`${id} has ${h.kind} hours`);
+  }
   return h.byDay;
 };
 
-describe("parseHours", () => {
-  test("day lists with gaps", () => {
-    const week = fixed(parseHours("Tues, Thurs-Sun 10:00-18:00"));
-    expect(week[2]).toEqual([{ open: 600, close: 1080 }]); // Tue
-    expect(week[3]).toEqual([]); // Wed closed
-    expect(week[0]).toHaveLength(1); // Sun open
+// The hours and rules come from an LLM extraction (scripts/extract-place-facts.ts).
+// These tests pin down the tricky cases it must get right, so a bad re-run fails loudly.
+describe("extracted place facts", () => {
+  test("every place with listed hours got structured hours", () => {
+    const missing = (raw as { id: string; hours: string | null }[])
+      .filter((r) => r.hours && place(r.id).hours.kind === "unknown")
+      .map((r) => r.id);
+    expect(missing).toEqual([]);
   });
-  test("ranges that wrap around the week", () => {
-    const week = fixed(parseHours("Wed-Mon 10:00-19:00"));
-    expect(week[2]).toEqual([]); // Tue closed
-    expect(week[1]).toHaveLength(1); // Mon open
+  test("closed days", () => {
+    expect(week("place_026")[MON]).toEqual([]); // Uffizi: "Tues-Sun 8:15-18:50"
+    expect(week("place_062")[TUE]).toEqual([]); // "Wed-Mon 10:00-19:00" wraps around the week
+    expect(week("place_064")[WED]).toEqual([]); // "Tues, Thurs-Sun 10:00-18:00"
+    expect(week("place_064")[TUE]).toHaveLength(1);
   });
-  test("closing after midnight", () => {
-    expect(fixed(parseHours("8:00-01:00"))[3]).toEqual([{ open: 480, close: 1500 }]);
+  test("split service and closing after midnight", () => {
+    expect(week("place_003")[TUE]).toHaveLength(2); // lunch and dinner
+    expect(week("place_020")[SUN][0].close).toBe(25 * 60); // "8:00-01:00"
   });
-  test("am/pm", () => {
-    expect(fixed(parseHours("9am-12:30pm"))[1]).toEqual([{ open: 540, close: 750 }]);
+  test("facts that only exist in the description or notes", () => {
+    expect(week("place_079")[TUE][0].close).toBe(26 * 60); // "Evenings" + "Open until 2am"
+    expect(week("place_053")[SUN]).toEqual([]); // "Tours run weekday mornings only"
+    expect(place("place_059").nthWeekendOnly).toBe(3); // Brera: third weekend only
   });
-  test("different hours on different days", () => {
-    const week = fixed(parseHours("Mon-Fri 7:00-14:00, Sat 7:00-17:00"));
-    expect(week[1]).toEqual([{ open: 420, close: 840 }]);
-    expect(week[6]).toEqual([{ open: 420, close: 1020 }]);
-    expect(week[0]).toEqual([]);
-  });
-  test("split lunch and dinner service", () => {
-    expect(fixed(parseHours("Mon-Sat 12:30-14:30, 19:30-22:30"))[5]).toHaveLength(2);
-  });
-  test("vague and unparseable values", () => {
-    expect(parseHours("Evenings").kind).toBe("approximate");
-    expect(parseHours("by appointment").kind).toBe("unknown");
-    expect(parseHours(null).kind).toBe("unknown");
-  });
-  test("every non-empty hours value in the dataset parses", () => {
-    const failures = (raw as { id: string; hours: string | null }[])
-      .filter((r) => r.hours && parseHours(r.hours).kind === "unknown")
-      .map((r) => `${r.id}: ${r.hours}`);
-    expect(failures).toEqual([]);
+  test("seasonal rules versus seasonal advice", () => {
+    expect(place("place_063").openMonths).toEqual([4, 5, 6, 7, 8, 9, 10]); // "Open April-October only"
+    expect(place("place_090").openMonths).toEqual([10]); // "October only"
+    expect(place("place_021").openMonths).toBeNull(); // "Best April-October... Sundays only" is advice
   });
 });
 
-describe("data normalization", () => {
-  test("seasonal months", () => {
-    expect(parseOpenMonths("Open April-October only.")).toEqual([4, 5, 6, 7, 8, 9, 10]);
-    expect(parseOpenMonths("October only, check exact dates")).toEqual([10]);
-    expect(parseOpenMonths("Best May-September")).toBeNull(); // advice, not a rule
+describe("data cleanup", () => {
+  test("a location far from the rest of its city is moved back, with a note", () => {
+    const brera = place("place_059");
+    expect(distanceKm(brera, baseCenter("Milan"))).toBeLessThan(5);
+    expect(brera.notes.join()).toMatch(/km from anything else in Milan/);
   });
-  test("bad coordinates are corrected and the low-rated tourist trap is excluded", () => {
-    expect(PLACES_BY_ID.get("place_059")!.lon).toBeCloseTo(9.19, 1);
-    expect(PLACES_BY_ID.get("place_025")!.excludedReason).toMatch(/2.1/);
+  test("the low-rated tourist trap is excluded", () => {
+    expect(place("place_025").excludedReason).toMatch(/2.1/);
   });
   test("every place ends up with a usable duration", () => {
     expect(PLACES.every((p) => p.durationMinutes > 0)).toBe(true);
@@ -74,10 +71,8 @@ describe("data normalization", () => {
 });
 
 describe("anchoring", () => {
-  test("detects the base city from the request", () => {
-    expect(detectBases("build me a rome trip for my two kids")).toEqual(["Rome"]);
-    expect(detectBases("wine in Tuscany")).toEqual(["Florence"]);
-    expect(detectBases("surprise me")).toEqual([]);
+  test("base cities come from the data: cities with enough places for 3 days", () => {
+    expect(new Set(BASE_CITIES)).toEqual(new Set(["Rome", "Florence", "Venice", "Milan", "Bologna"]));
   });
   test("Rome candidates are all in Rome (nothing is a day trip away)", () => {
     expect(new Set(candidatesFor(["Rome"]).map((p) => p.city))).toEqual(new Set(["Rome"]));
@@ -115,7 +110,12 @@ describe("scheduler", () => {
   });
   test("flags repeats across days", () => {
     const plan: Plan = {
-      title: "", summary: "", bases: ["Rome"], preferred_tags: [], avoid_tags: [], assumptions: [],
+      title: "",
+      summary: "",
+      bases: ["Rome"],
+      preferred_tags: [],
+      avoid_tags: [],
+      assumptions: [],
       days: [day(["place_001"]), day(["place_001"]), day([])],
     };
     expect(errorReport(scheduleTrip(plan, TUESDAY)).join()).toMatch(/Already visited/);
@@ -124,7 +124,12 @@ describe("scheduler", () => {
 
 describe("fallback and swaps", () => {
   const plan: Plan = {
-    title: "", summary: "", bases: ["Florence"], preferred_tags: ["art"], avoid_tags: [], assumptions: [],
+    title: "",
+    summary: "",
+    bases: ["Florence"],
+    preferred_tags: ["art"],
+    avoid_tags: [],
+    assumptions: [],
     days: [day(["place_026", "place_084"]), day([]), day([])], // Uffizi on a Monday, then Ponte Vecchio
   };
   test("drops only the invalid stop and explains why", () => {
@@ -144,7 +149,7 @@ describe("fallback and swaps", () => {
 });
 
 describe("travel times", () => {
-  const p = (id: string) => PLACES_BY_ID.get(id)!;
+  const p = place;
   test("uses the routed walking time within a city", () => {
     expect(travelBetween(p("place_001"), p("place_018"))).toBe(25); // Colosseum -> Trevi on foot
   });

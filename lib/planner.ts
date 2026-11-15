@@ -4,14 +4,56 @@
 
 import Anthropic from "@anthropic-ai/sdk";
 import { zodOutputFormat } from "@anthropic-ai/sdk/helpers/zod";
-import type { z } from "zod";
+import { z } from "zod";
 import { PLACES, type Place } from "@/lib/places";
-import { BASE_CITIES, candidatesFor, detectBases, isBaseCity, type BaseCity } from "@/lib/geo";
+import { BASE_CITIES, candidatesFor, isBaseCity, type BaseCity } from "@/lib/geo";
 import { DayResponseSchema, PlanSchema, type Plan, type PlannedDay } from "@/lib/schemas";
 import { addDays, dropInvalidStops, errorReport, scheduleTrip, weekdayName } from "@/lib/schedule";
 
 const MODEL = "claude-opus-5-5";
+const FAST_MODEL = "claude-haiku-5-5"; // tiny classification task: cheapest and fastest model
 let client: Anthropic | null = null; // created on first use so builds don't need the API key
+
+// ---------- Step 1: which base city? (Haiku, ~1s) ----------
+
+/** What each base covers, from the data: "Florence: Florence, Siena, Pienza... (Tuscany, ...)". */
+const BASE_COVERAGE = BASE_CITIES.map((base) => {
+  const reachable = candidatesFor([base]);
+  const cities = [...new Set(reachable.map((p) => p.city))];
+  const regions = [...new Set(reachable.map((p) => p.region))];
+  return `${base}: ${cities.join(", ")} (${regions.join(", ")})`;
+}).join("\n");
+
+const BasesSchema = z.object({
+  bases: z
+    .array(z.enum(BASE_CITIES as [string, ...string[]]))
+    .describe("Empty if the request names no place"),
+});
+
+/**
+ * Reads the request and returns the base city (or two) it implies, e.g. "the Eternal City" -> Rome,
+ * "Leaning Tower and wine" -> Florence. Code then filters candidates to what that base can reach.
+ */
+export async function detectBases(request: string): Promise<BaseCity[]> {
+  client ??= new Anthropic();
+  try {
+    const response = await client.messages.parse({
+      model: FAST_MODEL,
+      max_tokens: 200,
+      thinking: { type: "disabled" },
+      output_config: { effort: "low", format: zodOutputFormat(BasesSchema) },
+      system: `Pick the base city a traveler wants to stay in. Each base and what it covers:\n${BASE_COVERAGE}\n\nIf the request names a base city, use it. Otherwise map towns, regions and landmarks to the base that covers them; if several cover a place, pick the one geographically closest to it (use your knowledge for places not listed). Two bases only if the request clearly wants both.`,
+      messages: [{ role: "user", content: request }],
+    });
+    return response.parsed_output?.bases ?? [];
+  } catch (err) {
+    // Not fatal: without a base, the planner model picks one from the full list.
+    console.error("Base detection failed", err);
+    return [];
+  }
+}
+
+// ---------- Step 2: plan the trip (Opus) ----------
 
 const TAG_VOCABULARY = [...new Set(PLACES.flatMap((p) => p.tags))].sort();
 
@@ -37,13 +79,23 @@ Personalize:
 
 function placeLine(p: Place): string {
   return [
-    p.id, p.name, p.type, `${p.city}${p.neighborhood ? `, ${p.neighborhood}` : ""}`,
-    `hours: ${p.hoursText}`, `${p.durationMinutes} min`, p.priceRange ?? "price ?",
-    p.rating ? `rating ${p.rating}` : "unrated", `tags: ${p.tags.join(", ")}`,
-    p.bookingRequired ? "book ahead" : "", p.seasonalNote ? `season: ${p.seasonalNote}` : "",
-    p.thirdWeekendOnly ? "third weekend of the month only" : "",
+    p.id,
+    p.name,
+    p.type,
+    `${p.city}${p.neighborhood ? `, ${p.neighborhood}` : ""}`,
+    `hours: ${p.hoursText}`,
+    `${p.durationMinutes} min`,
+    p.priceRange ?? "price ?",
+    p.rating ? `rating ${p.rating}` : "unrated",
+    `tags: ${p.tags.join(", ")}`,
+    p.bookingRequired ? "book ahead" : "",
+    p.seasonalNote ? `season: ${p.seasonalNote}` : "",
+    p.nthWeekendOnly ? `weekend #${p.nthWeekendOnly} of the month only` : "",
+    p.notes.length ? `notes: ${p.notes.join(" ")}` : "",
     p.description,
-  ].filter(Boolean).join(" | ");
+  ]
+    .filter(Boolean)
+    .join(" | ");
 }
 
 function system(candidates: Place[]): Anthropic.Beta.BetaTextBlockParam[] {
@@ -85,8 +137,12 @@ async function ask<S extends z.ZodType>(
     system: system(candidates),
     messages,
   });
-  if (response.stop_reason === "refusal") throw new Error("The model declined this request.");
-  if (!response.parsed_output) throw new Error(`No valid plan returned (stop: ${response.stop_reason}).`);
+  if (response.stop_reason === "refusal") {
+    throw new Error("The model declined this request.");
+  }
+  if (!response.parsed_output) {
+    throw new Error(`No valid plan returned (stop: ${response.stop_reason}).`);
+  }
   return response.parsed_output;
 }
 
@@ -107,7 +163,9 @@ async function checkAndRepair(
   repair: (errors: string[]) => Promise<Plan>,
 ): Promise<PlanResult> {
   const firstErrors = errorReport(scheduleTrip(draft, startDate));
-  if (firstErrors.length === 0) return { plan: draft, fixed: [], removed: [] };
+  if (firstErrors.length === 0) {
+    return { plan: draft, fixed: [], removed: [] };
+  }
 
   const repaired = await repair(firstErrors);
   const stillBroken = new Set(errorReport(scheduleTrip(repaired, startDate)));
@@ -120,13 +178,15 @@ function repairMessage(errors: string[]): string {
 }
 
 export async function planTrip(request: string, startDate: string): Promise<PlanResult> {
-  const bases = detectBases(request);
+  const bases = await detectBases(request);
   const candidates = candidatesFor(bases);
   const messages: Anthropic.Beta.BetaMessageParam[] = [
     { role: "user", content: tripContext(request, startDate, bases) },
   ];
   const draft = await ask(PlanSchema, candidates, messages);
-  if (bases.length) draft.bases = bases; // the detected anchor is not negotiable
+  if (bases.length) {
+    draft.bases = bases; // the detected anchor is not negotiable
+  }
 
   return checkAndRepair(draft, startDate, candidates, messages, async (errors) => {
     const fixed = await ask(PlanSchema, candidates, [
@@ -134,7 +194,9 @@ export async function planTrip(request: string, startDate: string): Promise<Plan
       { role: "assistant", content: JSON.stringify(draft) },
       { role: "user", content: repairMessage(errors) },
     ]);
-    if (bases.length) fixed.bases = bases;
+    if (bases.length) {
+      fixed.bases = bases;
+    }
     return fixed;
   });
 }

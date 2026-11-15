@@ -8,9 +8,16 @@ import type { Issue, ScheduledStop } from "@/lib/schedule";
 import type { Alternative } from "@/lib/swap";
 
 const TYPE_LABEL: Record<string, string> = {
-  historic_site: "Historic site", restaurant: "Restaurant", museum: "Museum", cafe: "Café",
-  viewpoint: "Viewpoint", experience: "Experience", neighborhood: "Neighborhood", market: "Market",
-  park: "Park", shop: "Shop",
+  historic_site: "Historic site",
+  restaurant: "Restaurant",
+  museum: "Museum",
+  cafe: "Café",
+  viewpoint: "Viewpoint",
+  experience: "Experience",
+  neighborhood: "Neighborhood",
+  market: "Market",
+  park: "Park",
+  shop: "Shop",
 };
 
 const ISSUE_STYLE: Record<Issue["severity"], string> = {
@@ -20,7 +27,9 @@ const ISSUE_STYLE: Record<Issue["severity"], string> = {
 };
 
 export function IssueList({ issues }: { issues: Issue[] }) {
-  if (!issues.length) return null;
+  if (!issues.length) {
+    return null;
+  }
   return (
     <ul className="mt-2 flex flex-wrap gap-1.5">
       {issues.map((i, k) => (
@@ -39,7 +48,9 @@ function duration(min: number) {
 
 /** Travel time to this stop, plus any free time spent waiting for it to open. */
 export function TravelLine({ minutes, freeMinutes }: { minutes: number; freeMinutes: number }) {
-  if (!minutes && freeMinutes < 15) return null;
+  if (!minutes && freeMinutes < 15) {
+    return null;
+  }
   const Icon = minutes > 25 ? TrainFront : Footprints;
   return (
     <div className="flex items-center gap-3 py-1 pl-[4.5rem] text-xs text-stone-500">
@@ -81,13 +92,23 @@ export function StopRow({ index, stop, swapOpen, alternatives, onToggleSwap, onS
               {p.name}
             </div>
             <div className="mt-0.5 text-xs text-stone-500">
-              {[TYPE_LABEL[p.type] ?? p.type, p.neighborhood ?? p.city, p.priceRange, p.rating && `★ ${p.rating}`]
+              {[
+                TYPE_LABEL[p.type] ?? p.type,
+                p.neighborhood ?? p.city,
+                p.priceRange,
+                p.rating && `★ ${p.rating}`,
+              ]
                 .filter(Boolean)
                 .join(" · ")}
             </div>
           </div>
           <div className="flex shrink-0 gap-1">
-            <Button variant={swapOpen ? "secondary" : "ghost"} size="sm" onClick={onToggleSwap} aria-label="Swap stop">
+            <Button
+              variant={swapOpen ? "secondary" : "ghost"}
+              size="sm"
+              onClick={onToggleSwap}
+              aria-label="Swap stop"
+            >
               <Repeat2 className="size-4" /> Swap
             </Button>
             <Button variant="ghost" size="sm" onClick={onRemove} aria-label="Remove stop">
@@ -120,11 +141,17 @@ export function StopRow({ index, stop, swapOpen, alternatives, onToggleSwap, onS
                         </span>
                       </div>
                       <div className="mt-0.5 flex flex-wrap items-center gap-1 text-xs text-stone-500">
-                        {[TYPE_LABEL[alt.place.type], alt.place.priceRange, alt.place.rating && `★ ${alt.place.rating}`]
+                        {[
+                          TYPE_LABEL[alt.place.type],
+                          alt.place.priceRange,
+                          alt.place.rating && `★ ${alt.place.rating}`,
+                        ]
                           .filter(Boolean)
                           .join(" · ")}
                         {alt.matchedTags.map((t) => (
-                          <Badge key={t} variant="secondary" className="text-[10px]">{t}</Badge>
+                          <Badge key={t} variant="secondary" className="text-[10px]">
+                            {t}
+                          </Badge>
                         ))}
                       </div>
                     </button>

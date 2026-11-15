@@ -15,22 +15,30 @@ async function walkingTable(places: Place[]): Promise<number[][]> {
     headers: { "User-Agent": "trip-planner-precompute/1.0" },
   });
   const body = await res.json();
-  if (body.code !== "Ok") throw new Error(`Router error: ${body.code} ${body.message ?? ""}`);
+  if (body.code !== "Ok") {
+    throw new Error(`Router error: ${body.code} ${body.message ?? ""}`);
+  }
   return body.durations; // seconds, durations[i][j] = from place i to place j
 }
 
 async function main() {
   const byCity = new Map<string, Place[]>();
-  for (const p of PLACES) byCity.set(p.city, [...(byCity.get(p.city) ?? []), p]);
+  for (const p of PLACES) {
+    byCity.set(p.city, [...(byCity.get(p.city) ?? []), p]);
+  }
 
   const minutes: Record<string, Record<string, number>> = {};
   for (const [city, places] of byCity) {
-    if (places.length < 2) continue;
+    if (places.length < 2) {
+      continue;
+    }
     const table = await walkingTable(places);
     places.forEach((from, i) => {
       minutes[from.id] = {};
       places.forEach((to, j) => {
-        if (i !== j && table[i][j] !== null) minutes[from.id][to.id] = Math.ceil(table[i][j] / 60);
+        if (i !== j && table[i][j] !== null) {
+          minutes[from.id][to.id] = Math.ceil(table[i][j] / 60);
+        }
       });
     });
     console.log(`${city}: ${places.length} places`);
@@ -39,7 +47,11 @@ async function main() {
 
   writeFileSync(
     "data/walking-times.json",
-    JSON.stringify({ source: "OSRM foot router, routing.openstreetmap.de (OpenStreetMap)", minutes }, null, 1),
+    JSON.stringify(
+      { source: "OSRM foot router, routing.openstreetmap.de (OpenStreetMap)", minutes },
+      null,
+      1,
+    ),
   );
 }
 

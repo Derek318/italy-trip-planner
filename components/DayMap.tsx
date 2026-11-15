@@ -21,9 +21,9 @@ function pin(n: number) {
 function FitBounds({ points }: { points: [number, number][] }) {
   const map = useMap();
   useEffect(() => {
-    if (points.length) {  
+    if (points.length) {
       map.fitBounds(points, { padding: [40, 40], maxZoom: 15 });
-    } 
+    }
   }, [map, points]);
   return null;
 }
@@ -31,7 +31,12 @@ function FitBounds({ points }: { points: [number, number][] }) {
 export default function DayMap({ stops }: { stops: ScheduledStop[] }) {
   const points = stops.map((s) => [s.place.lat, s.place.lon] as [number, number]);
   return (
-    <MapContainer center={points[0] ?? [42.5, 12.5]} zoom={13} scrollWheelZoom={false} className="h-full w-full">
+    <MapContainer
+      center={points[0] ?? [42.5, 12.5]}
+      zoom={13}
+      scrollWheelZoom={false}
+      className="h-full w-full"
+    >
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

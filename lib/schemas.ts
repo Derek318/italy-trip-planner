@@ -24,6 +24,49 @@ export const RawPlaceSchema = z.object({
 });
 export type RawPlace = z.infer<typeof RawPlaceSchema>;
 
+// ---------- Facts extracted offline from messy text (scripts/extract-place-facts.ts) ----------
+
+const Clock = z
+  .string()
+  .regex(/^\d{2}:\d{2}$/)
+  .describe("24h time, e.g. 09:30. Use 01:00 for 1am closing");
+const OpenWindow = z.object({ open: Clock, close: Clock });
+const DayHours = z.array(OpenWindow).describe("Empty array = closed that day");
+
+export const PlaceFactsSchema = z.object({
+  id: z.string(),
+  weekly_hours: z
+    .object({
+      mon: DayHours,
+      tue: DayHours,
+      wed: DayHours,
+      thu: DayHours,
+      fri: DayHours,
+      sat: DayHours,
+      sun: DayHours,
+    })
+    .nullable()
+    .describe("null when no hours can be determined from the text"),
+  hours_approximate: z.boolean().describe("true when the source is vague, e.g. 'Evenings' or 'Morning only'"),
+  open_months: z
+    .array(z.number().int().min(1).max(12))
+    .nullable()
+    .describe("Months it operates, only for hard rules like 'April-October only'. null = year-round"),
+  nth_weekend_only: z
+    .number()
+    .int()
+    .min(1)
+    .max(5)
+    .nullable()
+    .describe("e.g. 3 for 'third weekend of each month only'"),
+  inference_note: z
+    .string()
+    .nullable()
+    .describe("Short note when a fact came from the description or notes rather than the hours field"),
+});
+export const PlaceFactsFileSchema = z.object({ places: z.array(PlaceFactsSchema) });
+export type PlaceFacts = z.infer<typeof PlaceFactsSchema>;
+
 // ---------- What the LLM returns ----------
 // The LLM only chooses and orders places. Code assigns all times (see lib/schedule.ts).
 

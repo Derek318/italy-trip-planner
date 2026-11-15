@@ -1,0 +1,3971 @@
+{
+ "places": [
+  {
+   "id": "place_001",
+   "weekly_hours": {
+    "mon": [
+     {
+      "open": "09:00",
+      "close": "19:00"
+     }
+    ],
+    "tue": [
+     {
+      "open": "09:00",
+      "close": "19:00"
+     }
+    ],
+    "wed": [
+     {
+      "open": "09:00",
+      "close": "19:00"
+     }
+    ],
+    "thu": [
+     {
+      "open": "09:00",
+      "close": "19:00"
+     }
+    ],
+    "fri": [
+     {
+      "open": "09:00",
+      "close": "19:00"
+     }
+    ],
+    "sat": [
+     {
+      "open": "09:00",
+      "close": "19:00"
+     }
+    ],
+    "sun": [
+     {
+      "open": "09:00",
+      "close": "19:00"
+     }
+    ]
+   },
+   "hours_approximate": false,
+   "open_months": null,
+   "nth_weekend_only": null,
+   "inference_note": null
+  },
+  {
+   "id": "place_002",
+   "weekly_hours": null,
+   "hours_approximate": false,
+   "open_months": null,
+   "nth_weekend_only": null,
+   "inference_note": null
+  },
+  {
+   "id": "place_003",
+   "weekly_hours": {
+    "mon": [
+     {
+      "open": "12:30",
+      "close": "14:30"
+     },
+     {
+      "open": "19:30",
+      "close": "22:30"
+     }
+    ],
+    "tue": [
+     {
+      "open": "12:30",
+      "close": "14:30"
+     },
+     {
+      "open": "19:30",
+      "close": "22:30"
+     }
+    ],
+    "wed": [
+     {
+      "open": "12:30",
+      "close": "14:30"
+     },
+     {
+      "open": "19:30",
+      "close": "22:30"
+     }
+    ],
+    "thu": [
+     {
+      "open": "12:30",
+      "close": "14:30"
+     },
+     {
+      "open": "19:30",
+      "close": "22:30"
+     }
+    ],
+    "fri": [
+     {
+      "open": "12:30",
+      "close": "14:30"
+     },
+     {
+      "open": "19:30",
+      "close": "22:30"
+     }
+    ],
+    "sat": [
+     {
+      "open": "12:30",
+      "close": "14:30"
+     },
+     {
+      "open": "19:30",
+      "close": "22:30"
+     }
+    ],
+    "sun": []
+   },
+   "hours_approximate": false,
+   "open_months": null,
+   "nth_weekend_only": null,
+   "inference_note": null
+  },
+  {
+   "id": "place_004",
+   "weekly_hours": {
+    "mon": [
+     {
+      "open": "09:00",
+      "close": "19:00"
+     }
+    ],
+    "tue": [
+     {
+      "open": "09:00",
+      "close": "19:00"
+     }
+    ],
+    "wed": [
+     {
+      "open": "09:00",
+      "close": "19:00"
+     }
+    ],
+    "thu": [
+     {
+      "open": "09:00",
+      "close": "19:00"
+     }
+    ],
+    "fri": [
+     {
+      "open": "09:00",
+      "close": "19:00"
+     }
+    ],
+    "sat": [
+     {
+      "open": "09:00",
+      "close": "19:00"
+     }
+    ],
+    "sun": [
+     {
+      "open": "09:00",
+      "close": "19:00"
+     }
+    ]
+   },
+   "hours_approximate": false,
+   "open_months": null,
+   "nth_weekend_only": null,
+   "inference_note": null
+  },
+  {
+   "id": "place_005",
+   "weekly_hours": {
+    "mon": [
+     {
+      "open": "09:00",
+      "close": "19:00"
+     }
+    ],
+    "tue": [
+     {
+      "open": "09:00",
+      "close": "19:00"
+     }
+    ],
+    "wed": [
+     {
+      "open": "09:00",
+      "close": "19:00"
+     }
+    ],
+    "thu": [
+     {
+      "open": "09:00",
+      "close": "19:00"
+     }
+    ],
+    "fri": [
+     {
+      "open": "09:00",
+      "close": "19:00"
+     }
+    ],
+    "sat": [
+     {
+      "open": "09:00",
+      "close": "19:00"
+     }
+    ],
+    "sun": [
+     {
+      "open": "09:00",
+      "close": "19:00"
+     }
+    ]
+   },
+   "hours_approximate": false,
+   "open_months": null,
+   "nth_weekend_only": null,
+   "inference_note": null
+  },
+  {
+   "id": "place_006",
+   "weekly_hours": {
+    "mon": [
+     {
+      "open": "08:00",
+      "close": "12:00"
+     }
+    ],
+    "tue": [
+     {
+      "open": "08:00",
+      "close": "12:00"
+     }
+    ],
+    "wed": [
+     {
+      "open": "08:00",
+      "close": "12:00"
+     }
+    ],
+    "thu": [
+     {
+      "open": "08:00",
+      "close": "12:00"
+     }
+    ],
+    "fri": [
+     {
+      "open": "08:00",
+      "close": "12:00"
+     }
+    ],
+    "sat": [
+     {
+      "open": "08:00",
+      "close": "12:00"
+     }
+    ],
+    "sun": [
+     {
+      "open": "08:00",
+      "close": "12:00"
+     }
+    ]
+   },
+   "hours_approximate": true,
+   "open_months": null,
+   "nth_weekend_only": null,
+   "inference_note": null
+  },
+  {
+   "id": "place_007",
+   "weekly_hours": {
+    "mon": [],
+    "tue": [
+     {
+      "open": "09:00",
+      "close": "19:00"
+     }
+    ],
+    "wed": [
+     {
+      "open": "09:00",
+      "close": "19:00"
+     }
+    ],
+    "thu": [
+     {
+      "open": "09:00",
+      "close": "19:00"
+     }
+    ],
+    "fri": [
+     {
+      "open": "09:00",
+      "close": "19:00"
+     }
+    ],
+    "sat": [
+     {
+      "open": "09:00",
+      "close": "19:00"
+     }
+    ],
+    "sun": [
+     {
+      "open": "09:00",
+      "close": "19:00"
+     }
+    ]
+   },
+   "hours_approximate": false,
+   "open_months": null,
+   "nth_weekend_only": null,
+   "inference_note": null
+  },
+  {
+   "id": "place_008",
+   "weekly_hours": null,
+   "hours_approximate": false,
+   "open_months": null,
+   "nth_weekend_only": null,
+   "inference_note": null
+  },
+  {
+   "id": "place_009",
+   "weekly_hours": {
+    "mon": [],
+    "tue": [
+     {
+      "open": "19:30",
+      "close": "22:30"
+     }
+    ],
+    "wed": [
+     {
+      "open": "19:30",
+      "close": "22:30"
+     }
+    ],
+    "thu": [
+     {
+      "open": "19:30",
+      "close": "22:30"
+     }
+    ],
+    "fri": [
+     {
+      "open": "19:30",
+      "close": "22:30"
+     }
+    ],
+    "sat": [
+     {
+      "open": "19:30",
+      "close": "22:30"
+     }
+    ],
+    "sun": [
+     {
+      "open": "19:30",
+      "close": "22:30"
+     }
+    ]
+   },
+   "hours_approximate": false,
+   "open_months": null,
+   "nth_weekend_only": null,
+   "inference_note": null
+  },
+  {
+   "id": "place_010",
+   "weekly_hours": {
+    "mon": [
+     {
+      "open": "09:00",
+      "close": "18:00"
+     }
+    ],
+    "tue": [
+     {
+      "open": "09:00",
+      "close": "18:00"
+     }
+    ],
+    "wed": [
+     {
+      "open": "09:00",
+      "close": "18:00"
+     }
+    ],
+    "thu": [
+     {
+      "open": "09:00",
+      "close": "18:00"
+     }
+    ],
+    "fri": [
+     {
+      "open": "09:00",
+      "close": "18:00"
+     }
+    ],
+    "sat": [
+     {
+      "open": "09:00",
+      "close": "18:00"
+     }
+    ],
+    "sun": []
+   },
+   "hours_approximate": false,
+   "open_months": null,
+   "nth_weekend_only": null,
+   "inference_note": "Seasonal note: closed Sundays except the last Sunday of the month (free entry); hours for that Sunday not given."
+  },
+  {
+   "id": "place_011",
+   "weekly_hours": {
+    "mon": [
+     {
+      "open": "07:30",
+      "close": "24:00"
+     }
+    ],
+    "tue": [
+     {
+      "open": "07:30",
+      "close": "24:00"
+     }
+    ],
+    "wed": [
+     {
+      "open": "07:30",
+      "close": "24:00"
+     }
+    ],
+    "thu": [
+     {
+      "open": "07:30",
+      "close": "24:00"
+     }
+    ],
+    "fri": [
+     {
+      "open": "07:30",
+      "close": "24:00"
+     }
+    ],
+    "sat": [
+     {
+      "open": "07:30",
+      "close": "24:00"
+     }
+    ],
+    "sun": [
+     {
+      "open": "07:30",
+      "close": "24:00"
+     }
+    ]
+   },
+   "hours_approximate": false,
+   "open_months": null,
+   "nth_weekend_only": null,
+   "inference_note": null
+  },
+  {
+   "id": "place_012",
+   "weekly_hours": {
+    "mon": [
+     {
+      "open": "09:30",
+      "close": "17:30"
+     }
+    ],
+    "tue": [
+     {
+      "open": "09:30",
+      "close": "17:30"
+     }
+    ],
+    "wed": [
+     {
+      "open": "09:30",
+      "close": "17:30"
+     }
+    ],
+    "thu": [
+     {
+      "open": "09:30",
+      "close": "17:30"
+     }
+    ],
+    "fri": [
+     {
+      "open": "09:30",
+      "close": "17:30"
+     }
+    ],
+    "sat": [
+     {
+      "open": "09:30",
+      "close": "17:30"
+     }
+    ],
+    "sun": [
+     {
+      "open": "09:30",
+      "close": "17:30"
+     }
+    ]
+   },
+   "hours_approximate": false,
+   "open_months": null,
+   "nth_weekend_only": null,
+   "inference_note": null
+  },
+  {
+   "id": "place_013",
+   "weekly_hours": null,
+   "hours_approximate": false,
+   "open_months": null,
+   "nth_weekend_only": null,
+   "inference_note": null
+  },
+  {
+   "id": "place_014",
+   "weekly_hours": null,
+   "hours_approximate": false,
+   "open_months": null,
+   "nth_weekend_only": null,
+   "inference_note": null
+  },
+  {
+   "id": "place_015",
+   "weekly_hours": {
+    "mon": [
+     {
+      "open": "07:00",
+      "close": "14:00"
+     }
+    ],
+    "tue": [
+     {
+      "open": "07:00",
+      "close": "14:00"
+     }
+    ],
+    "wed": [
+     {
+      "open": "07:00",
+      "close": "14:00"
+     }
+    ],
+    "thu": [
+     {
+      "open": "07:00",
+      "close": "14:00"
+     }
+    ],
+    "fri": [
+     {
+      "open": "07:00",
+      "close": "14:00"
+     }
+    ],
+    "sat": [
+     {
+      "open": "07:00",
+      "close": "14:00"
+     }
+    ],
+    "sun": []
+   },
+   "hours_approximate": false,
+   "open_months": null,
+   "nth_weekend_only": null,
+   "inference_note": null
+  },
+  {
+   "id": "place_016",
+   "weekly_hours": {
+    "mon": [
+     {
+      "open": "09:00",
+      "close": "19:00"
+     }
+    ],
+    "tue": [
+     {
+      "open": "09:00",
+      "close": "19:00"
+     }
+    ],
+    "wed": [
+     {
+      "open": "09:00",
+      "close": "19:00"
+     }
+    ],
+    "thu": [
+     {
+      "open": "09:00",
+      "close": "19:00"
+     }
+    ],
+    "fri": [
+     {
+      "open": "09:00",
+      "close": "19:00"
+     }
+    ],
+    "sat": [
+     {
+      "open": "09:00",
+      "close": "19:00"
+     }
+    ],
+    "sun": [
+     {
+      "open": "09:00",
+      "close": "19:00"
+     }
+    ]
+   },
+   "hours_approximate": false,
+   "open_months": null,
+   "nth_weekend_only": null,
+   "inference_note": null
+  },
+  {
+   "id": "place_017",
+   "weekly_hours": {
+    "mon": [
+     {
+      "open": "09:00",
+      "close": "19:30"
+     }
+    ],
+    "tue": [
+     {
+      "open": "09:00",
+      "close": "19:30"
+     }
+    ],
+    "wed": [
+     {
+      "open": "09:00",
+      "close": "19:30"
+     }
+    ],
+    "thu": [
+     {
+      "open": "09:00",
+      "close": "19:30"
+     }
+    ],
+    "fri": [
+     {
+      "open": "09:00",
+      "close": "19:30"
+     }
+    ],
+    "sat": [
+     {
+      "open": "09:00",
+      "close": "19:30"
+     }
+    ],
+    "sun": [
+     {
+      "open": "09:00",
+      "close": "19:30"
+     }
+    ]
+   },
+   "hours_approximate": false,
+   "open_months": null,
+   "nth_weekend_only": null,
+   "inference_note": null
+  },
+  {
+   "id": "place_018",
+   "weekly_hours": null,
+   "hours_approximate": false,
+   "open_months": null,
+   "nth_weekend_only": null,
+   "inference_note": null
+  },
+  {
+   "id": "place_019",
+   "weekly_hours": null,
+   "hours_approximate": false,
+   "open_months": null,
+   "nth_weekend_only": null,
+   "inference_note": null
+  },
+  {
+   "id": "place_020",
+   "weekly_hours": {
+    "mon": [
+     {
+      "open": "08:00",
+      "close": "01:00"
+     }
+    ],
+    "tue": [
+     {
+      "open": "08:00",
+      "close": "01:00"
+     }
+    ],
+    "wed": [
+     {
+      "open": "08:00",
+      "close": "01:00"
+     }
+    ],
+    "thu": [
+     {
+      "open": "08:00",
+      "close": "01:00"
+     }
+    ],
+    "fri": [
+     {
+      "open": "08:00",
+      "close": "01:00"
+     }
+    ],
+    "sat": [
+     {
+      "open": "08:00",
+      "close": "01:00"
+     }
+    ],
+    "sun": [
+     {
+      "open": "08:00",
+      "close": "01:00"
+     }
+    ]
+   },
+   "hours_approximate": false,
+   "open_months": null,
+   "nth_weekend_only": null,
+   "inference_note": null
+  },
+  {
+   "id": "place_021",
+   "weekly_hours": null,
+   "hours_approximate": false,
+   "open_months": null,
+   "nth_weekend_only": null,
+   "inference_note": "No hours given. Sunday-only road closure to cars is an access note, not opening hours. 'Best April-October' is advice, not a rule."
+  },
+  {
+   "id": "place_022",
+   "weekly_hours": {
+    "mon": [
+     {
+      "open": "12:30",
+      "close": "15:30"
+     },
+     {
+      "open": "19:30",
+      "close": "23:00"
+     }
+    ],
+    "tue": [
+     {
+      "open": "12:30",
+      "close": "15:30"
+     },
+     {
+      "open": "19:30",
+      "close": "23:00"
+     }
+    ],
+    "wed": [
+     {
+      "open": "12:30",
+      "close": "15:30"
+     },
+     {
+      "open": "19:30",
+      "close": "23:00"
+     }
+    ],
+    "thu": [
+     {
+      "open": "12:30",
+      "close": "15:30"
+     },
+     {
+      "open": "19:30",
+      "close": "23:00"
+     }
+    ],
+    "fri": [
+     {
+      "open": "12:30",
+      "close": "15:30"
+     },
+     {
+      "open": "19:30",
+      "close": "23:00"
+     }
+    ],
+    "sat": [
+     {
+      "open": "12:30",
+      "close": "15:30"
+     },
+     {
+      "open": "19:30",
+      "close": "23:00"
+     }
+    ],
+    "sun": []
+   },
+   "hours_approximate": false,
+   "open_months": null,
+   "nth_weekend_only": null,
+   "inference_note": null
+  },
+  {
+   "id": "place_023",
+   "weekly_hours": null,
+   "hours_approximate": false,
+   "open_months": null,
+   "nth_weekend_only": null,
+   "inference_note": null
+  },
+  {
+   "id": "place_024",
+   "weekly_hours": {
+    "mon": [
+     {
+      "open": "09:00",
+      "close": "19:00"
+     }
+    ],
+    "tue": [
+     {
+      "open": "09:00",
+      "close": "19:00"
+     }
+    ],
+    "wed": [
+     {
+      "open": "09:00",
+      "close": "19:00"
+     }
+    ],
+    "thu": [
+     {
+      "open": "09:00",
+      "close": "19:00"
+     }
+    ],
+    "fri": [
+     {
+      "open": "09:00",
+      "close": "19:00"
+     }
+    ],
+    "sat": [
+     {
+      "open": "09:00",
+      "close": "19:00"
+     }
+    ],
+    "sun": []
+   },
+   "hours_approximate": false,
+   "open_months": null,
+   "nth_weekend_only": null,
+   "inference_note": null
+  },
+  {
+   "id": "place_025",
+   "weekly_hours": {
+    "mon": [
+     {
+      "open": "11:00",
+      "close": "24:00"
+     }
+    ],
+    "tue": [
+     {
+      "open": "11:00",
+      "close": "24:00"
+     }
+    ],
+    "wed": [
+     {
+      "open": "11:00",
+      "close": "24:00"
+     }
+    ],
+    "thu": [
+     {
+      "open": "11:00",
+      "close": "24:00"
+     }
+    ],
+    "fri": [
+     {
+      "open": "11:00",
+      "close": "24:00"
+     }
+    ],
+    "sat": [
+     {
+      "open": "11:00",
+      "close": "24:00"
+     }
+    ],
+    "sun": [
+     {
+      "open": "11:00",
+      "close": "24:00"
+     }
+    ]
+   },
+   "hours_approximate": false,
+   "open_months": null,
+   "nth_weekend_only": null,
+   "inference_note": null
+  },
+  {
+   "id": "place_026",
+   "weekly_hours": {
+    "mon": [],
+    "tue": [
+     {
+      "open": "08:15",
+      "close": "18:50"
+     }
+    ],
+    "wed": [
+     {
+      "open": "08:15",
+      "close": "18:50"
+     }
+    ],
+    "thu": [
+     {
+      "open": "08:15",
+      "close": "18:50"
+     }
+    ],
+    "fri": [
+     {
+      "open": "08:15",
+      "close": "18:50"
+     }
+    ],
+    "sat": [
+     {
+      "open": "08:15",
+      "close": "18:50"
+     }
+    ],
+    "sun": [
+     {
+      "open": "08:15",
+      "close": "18:50"
+     }
+    ]
+   },
+   "hours_approximate": false,
+   "open_months": null,
+   "nth_weekend_only": null,
+   "inference_note": null
+  },
+  {
+   "id": "place_027",
+   "weekly_hours": null,
+   "hours_approximate": false,
+   "open_months": null,
+   "nth_weekend_only": null,
+   "inference_note": null
+  },
+  {
+   "id": "place_028",
+   "weekly_hours": null,
+   "hours_approximate": false,
+   "open_months": null,
+   "nth_weekend_only": null,
+   "inference_note": null
+  },
+  {
+   "id": "place_029",
+   "weekly_hours": {
+    "mon": [
+     {
+      "open": "12:00",
+      "close": "14:30"
+     },
+     {
+      "open": "19:00",
+      "close": "22:30"
+     }
+    ],
+    "tue": [
+     {
+      "open": "12:00",
+      "close": "14:30"
+     },
+     {
+      "open": "19:00",
+      "close": "22:30"
+     }
+    ],
+    "wed": [
+     {
+      "open": "12:00",
+      "close": "14:30"
+     },
+     {
+      "open": "19:00",
+      "close": "22:30"
+     }
+    ],
+    "thu": [
+     {
+      "open": "12:00",
+      "close": "14:30"
+     },
+     {
+      "open": "19:00",
+      "close": "22:30"
+     }
+    ],
+    "fri": [
+     {
+      "open": "12:00",
+      "close": "14:30"
+     },
+     {
+      "open": "19:00",
+      "close": "22:30"
+     }
+    ],
+    "sat": [
+     {
+      "open": "12:00",
+      "close": "14:30"
+     },
+     {
+      "open": "19:00",
+      "close": "22:30"
+     }
+    ],
+    "sun": [
+     {
+      "open": "12:00",
+      "close": "14:30"
+     },
+     {
+      "open": "19:00",
+      "close": "22:30"
+     }
+    ]
+   },
+   "hours_approximate": false,
+   "open_months": null,
+   "nth_weekend_only": null,
+   "inference_note": null
+  },
+  {
+   "id": "place_030",
+   "weekly_hours": {
+    "mon": [
+     {
+      "open": "07:00",
+      "close": "14:00"
+     }
+    ],
+    "tue": [
+     {
+      "open": "07:00",
+      "close": "14:00"
+     }
+    ],
+    "wed": [
+     {
+      "open": "07:00",
+      "close": "14:00"
+     }
+    ],
+    "thu": [
+     {
+      "open": "07:00",
+      "close": "14:00"
+     }
+    ],
+    "fri": [
+     {
+      "open": "07:00",
+      "close": "14:00"
+     }
+    ],
+    "sat": [
+     {
+      "open": "07:00",
+      "close": "17:00"
+     }
+    ],
+    "sun": []
+   },
+   "hours_approximate": false,
+   "open_months": null,
+   "nth_weekend_only": null,
+   "inference_note": null
+  },
+  {
+   "id": "place_031",
+   "weekly_hours": {
+    "mon": [
+     {
+      "open": "10:00",
+      "close": "24:00"
+     }
+    ],
+    "tue": [
+     {
+      "open": "10:00",
+      "close": "24:00"
+     }
+    ],
+    "wed": [
+     {
+      "open": "10:00",
+      "close": "24:00"
+     }
+    ],
+    "thu": [
+     {
+      "open": "10:00",
+      "close": "24:00"
+     }
+    ],
+    "fri": [
+     {
+      "open": "10:00",
+      "close": "24:00"
+     }
+    ],
+    "sat": [
+     {
+      "open": "10:00",
+      "close": "24:00"
+     }
+    ],
+    "sun": [
+     {
+      "open": "10:00",
+      "close": "24:00"
+     }
+    ]
+   },
+   "hours_approximate": false,
+   "open_months": null,
+   "nth_weekend_only": null,
+   "inference_note": null
+  },
+  {
+   "id": "place_032",
+   "weekly_hours": {
+    "mon": [],
+    "tue": [
+     {
+      "open": "08:15",
+      "close": "18:50"
+     }
+    ],
+    "wed": [
+     {
+      "open": "08:15",
+      "close": "18:50"
+     }
+    ],
+    "thu": [
+     {
+      "open": "08:15",
+      "close": "18:50"
+     }
+    ],
+    "fri": [
+     {
+      "open": "08:15",
+      "close": "18:50"
+     }
+    ],
+    "sat": [
+     {
+      "open": "08:15",
+      "close": "18:50"
+     }
+    ],
+    "sun": [
+     {
+      "open": "08:15",
+      "close": "18:50"
+     }
+    ]
+   },
+   "hours_approximate": false,
+   "open_months": null,
+   "nth_weekend_only": null,
+   "inference_note": null
+  },
+  {
+   "id": "place_033",
+   "weekly_hours": {
+    "mon": [],
+    "tue": [
+     {
+      "open": "12:00",
+      "close": "14:30"
+     },
+     {
+      "open": "19:00",
+      "close": "22:30"
+     }
+    ],
+    "wed": [
+     {
+      "open": "12:00",
+      "close": "14:30"
+     },
+     {
+      "open": "19:00",
+      "close": "22:30"
+     }
+    ],
+    "thu": [
+     {
+      "open": "12:00",
+      "close": "14:30"
+     },
+     {
+      "open": "19:00",
+      "close": "22:30"
+     }
+    ],
+    "fri": [
+     {
+      "open": "12:00",
+      "close": "14:30"
+     },
+     {
+      "open": "19:00",
+      "close": "22:30"
+     }
+    ],
+    "sat": [
+     {
+      "open": "12:00",
+      "close": "14:30"
+     },
+     {
+      "open": "19:00",
+      "close": "22:30"
+     }
+    ],
+    "sun": [
+     {
+      "open": "12:00",
+      "close": "14:30"
+     },
+     {
+      "open": "19:00",
+      "close": "22:30"
+     }
+    ]
+   },
+   "hours_approximate": false,
+   "open_months": null,
+   "nth_weekend_only": null,
+   "inference_note": null
+  },
+  {
+   "id": "place_034",
+   "weekly_hours": {
+    "mon": [
+     {
+      "open": "08:15",
+      "close": "16:30"
+     }
+    ],
+    "tue": [
+     {
+      "open": "08:15",
+      "close": "16:30"
+     }
+    ],
+    "wed": [
+     {
+      "open": "08:15",
+      "close": "16:30"
+     }
+    ],
+    "thu": [
+     {
+      "open": "08:15",
+      "close": "16:30"
+     }
+    ],
+    "fri": [
+     {
+      "open": "08:15",
+      "close": "16:30"
+     }
+    ],
+    "sat": [
+     {
+      "open": "08:15",
+      "close": "16:30"
+     }
+    ],
+    "sun": [
+     {
+      "open": "08:15",
+      "close": "16:30"
+     }
+    ]
+   },
+   "hours_approximate": false,
+   "open_months": null,
+   "nth_weekend_only": null,
+   "inference_note": "Seasonal note says summer hours extend to 19:30, but summer months are not specified."
+  },
+  {
+   "id": "place_035",
+   "weekly_hours": null,
+   "hours_approximate": false,
+   "open_months": [
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+   ],
+   "nth_weekend_only": null,
+   "inference_note": "Seasonal note: open April-October only."
+  },
+  {
+   "id": "place_036",
+   "weekly_hours": {
+    "mon": [
+     {
+      "open": "09:30",
+      "close": "17:30"
+     }
+    ],
+    "tue": [
+     {
+      "open": "09:30",
+      "close": "17:30"
+     }
+    ],
+    "wed": [
+     {
+      "open": "09:30",
+      "close": "17:30"
+     }
+    ],
+    "thu": [
+     {
+      "open": "09:30",
+      "close": "17:30"
+     }
+    ],
+    "fri": [
+     {
+      "open": "09:30",
+      "close": "17:30"
+     }
+    ],
+    "sat": [
+     {
+      "open": "09:30",
+      "close": "17:30"
+     }
+    ],
+    "sun": [
+     {
+      "open": "14:00",
+      "close": "17:30"
+     }
+    ]
+   },
+   "hours_approximate": false,
+   "open_months": null,
+   "nth_weekend_only": null,
+   "inference_note": null
+  },
+  {
+   "id": "place_037",
+   "weekly_hours": {
+    "mon": [
+     {
+      "open": "18:00",
+      "close": "24:00"
+     }
+    ],
+    "tue": [
+     {
+      "open": "18:00",
+      "close": "24:00"
+     }
+    ],
+    "wed": [
+     {
+      "open": "18:00",
+      "close": "24:00"
+     }
+    ],
+    "thu": [
+     {
+      "open": "18:00",
+      "close": "24:00"
+     }
+    ],
+    "fri": [
+     {
+      "open": "18:00",
+      "close": "24:00"
+     }
+    ],
+    "sat": [
+     {
+      "open": "18:00",
+      "close": "24:00"
+     }
+    ],
+    "sun": [
+     {
+      "open": "18:00",
+      "close": "24:00"
+     }
+    ]
+   },
+   "hours_approximate": true,
+   "open_months": null,
+   "nth_weekend_only": null,
+   "inference_note": null
+  },
+  {
+   "id": "place_038",
+   "weekly_hours": null,
+   "hours_approximate": false,
+   "open_months": null,
+   "nth_weekend_only": null,
+   "inference_note": null
+  },
+  {
+   "id": "place_039",
+   "weekly_hours": {
+    "mon": [],
+    "tue": [
+     {
+      "open": "12:30",
+      "close": "14:30"
+     },
+     {
+      "open": "19:30",
+      "close": "22:30"
+     }
+    ],
+    "wed": [
+     {
+      "open": "12:30",
+      "close": "14:30"
+     },
+     {
+      "open": "19:30",
+      "close": "22:30"
+     }
+    ],
+    "thu": [
+     {
+      "open": "12:30",
+      "close": "14:30"
+     },
+     {
+      "open": "19:30",
+      "close": "22:30"
+     }
+    ],
+    "fri": [
+     {
+      "open": "12:30",
+      "close": "14:30"
+     },
+     {
+      "open": "19:30",
+      "close": "22:30"
+     }
+    ],
+    "sat": [
+     {
+      "open": "12:30",
+      "close": "14:30"
+     },
+     {
+      "open": "19:30",
+      "close": "22:30"
+     }
+    ],
+    "sun": [
+     {
+      "open": "12:30",
+      "close": "14:30"
+     },
+     {
+      "open": "19:30",
+      "close": "22:30"
+     }
+    ]
+   },
+   "hours_approximate": false,
+   "open_months": null,
+   "nth_weekend_only": null,
+   "inference_note": null
+  },
+  {
+   "id": "place_040",
+   "weekly_hours": {
+    "mon": [
+     {
+      "open": "08:00",
+      "close": "19:00"
+     }
+    ],
+    "tue": [
+     {
+      "open": "08:00",
+      "close": "19:00"
+     }
+    ],
+    "wed": [
+     {
+      "open": "08:00",
+      "close": "19:00"
+     }
+    ],
+    "thu": [
+     {
+      "open": "08:00",
+      "close": "19:00"
+     }
+    ],
+    "fri": [
+     {
+      "open": "08:00",
+      "close": "19:00"
+     }
+    ],
+    "sat": [
+     {
+      "open": "08:00",
+      "close": "19:00"
+     }
+    ],
+    "sun": [
+     {
+      "open": "08:00",
+      "close": "19:00"
+     }
+    ]
+   },
+   "hours_approximate": false,
+   "open_months": null,
+   "nth_weekend_only": null,
+   "inference_note": null
+  },
+  {
+   "id": "place_041",
+   "weekly_hours": {
+    "mon": [
+     {
+      "open": "19:30",
+      "close": "22:30"
+     }
+    ],
+    "tue": [
+     {
+      "open": "19:30",
+      "close": "22:30"
+     }
+    ],
+    "wed": [
+     {
+      "open": "19:30",
+      "close": "22:30"
+     }
+    ],
+    "thu": [
+     {
+      "open": "19:30",
+      "close": "22:30"
+     }
+    ],
+    "fri": [
+     {
+      "open": "19:30",
+      "close": "22:30"
+     }
+    ],
+    "sat": [
+     {
+      "open": "19:30",
+      "close": "22:30"
+     }
+    ],
+    "sun": []
+   },
+   "hours_approximate": false,
+   "open_months": null,
+   "nth_weekend_only": null,
+   "inference_note": null
+  },
+  {
+   "id": "place_042",
+   "weekly_hours": {
+    "mon": [],
+    "tue": [
+     {
+      "open": "13:00",
+      "close": "15:00"
+     },
+     {
+      "open": "20:00",
+      "close": "22:30"
+     }
+    ],
+    "wed": [
+     {
+      "open": "13:00",
+      "close": "15:00"
+     },
+     {
+      "open": "20:00",
+      "close": "22:30"
+     }
+    ],
+    "thu": [
+     {
+      "open": "13:00",
+      "close": "15:00"
+     },
+     {
+      "open": "20:00",
+      "close": "22:30"
+     }
+    ],
+    "fri": [
+     {
+      "open": "13:00",
+      "close": "15:00"
+     },
+     {
+      "open": "20:00",
+      "close": "22:30"
+     }
+    ],
+    "sat": [
+     {
+      "open": "13:00",
+      "close": "15:00"
+     },
+     {
+      "open": "20:00",
+      "close": "22:30"
+     }
+    ],
+    "sun": []
+   },
+   "hours_approximate": false,
+   "open_months": null,
+   "nth_weekend_only": null,
+   "inference_note": null
+  },
+  {
+   "id": "place_043",
+   "weekly_hours": {
+    "mon": [],
+    "tue": [
+     {
+      "open": "12:30",
+      "close": "14:00"
+     },
+     {
+      "open": "20:00",
+      "close": "22:00"
+     }
+    ],
+    "wed": [
+     {
+      "open": "12:30",
+      "close": "14:00"
+     },
+     {
+      "open": "20:00",
+      "close": "22:00"
+     }
+    ],
+    "thu": [
+     {
+      "open": "12:30",
+      "close": "14:00"
+     },
+     {
+      "open": "20:00",
+      "close": "22:00"
+     }
+    ],
+    "fri": [
+     {
+      "open": "12:30",
+      "close": "14:00"
+     },
+     {
+      "open": "20:00",
+      "close": "22:00"
+     }
+    ],
+    "sat": [
+     {
+      "open": "12:30",
+      "close": "14:00"
+     },
+     {
+      "open": "20:00",
+      "close": "22:00"
+     }
+    ],
+    "sun": []
+   },
+   "hours_approximate": false,
+   "open_months": null,
+   "nth_weekend_only": null,
+   "inference_note": null
+  },
+  {
+   "id": "place_044",
+   "weekly_hours": null,
+   "hours_approximate": false,
+   "open_months": null,
+   "nth_weekend_only": null,
+   "inference_note": null
+  },
+  {
+   "id": "place_045",
+   "weekly_hours": {
+    "mon": [
+     {
+      "open": "09:30",
+      "close": "18:00"
+     }
+    ],
+    "tue": [
+     {
+      "open": "09:30",
+      "close": "18:00"
+     }
+    ],
+    "wed": [
+     {
+      "open": "09:30",
+      "close": "18:00"
+     }
+    ],
+    "thu": [
+     {
+      "open": "09:30",
+      "close": "18:00"
+     }
+    ],
+    "fri": [
+     {
+      "open": "09:30",
+      "close": "18:00"
+     }
+    ],
+    "sat": [
+     {
+      "open": "09:30",
+      "close": "18:00"
+     }
+    ],
+    "sun": [
+     {
+      "open": "09:30",
+      "close": "18:00"
+     }
+    ]
+   },
+   "hours_approximate": false,
+   "open_months": null,
+   "nth_weekend_only": null,
+   "inference_note": null
+  },
+  {
+   "id": "place_046",
+   "weekly_hours": {
+    "mon": [
+     {
+      "open": "08:00",
+      "close": "13:00"
+     },
+     {
+      "open": "16:30",
+      "close": "19:30"
+     }
+    ],
+    "tue": [
+     {
+      "open": "08:00",
+      "close": "13:00"
+     },
+     {
+      "open": "16:30",
+      "close": "19:30"
+     }
+    ],
+    "wed": [
+     {
+      "open": "08:00",
+      "close": "13:00"
+     },
+     {
+      "open": "16:30",
+      "close": "19:30"
+     }
+    ],
+    "thu": [
+     {
+      "open": "08:00",
+      "close": "13:00"
+     },
+     {
+      "open": "16:30",
+      "close": "19:30"
+     }
+    ],
+    "fri": [
+     {
+      "open": "08:00",
+      "close": "13:00"
+     },
+     {
+      "open": "16:30",
+      "close": "19:30"
+     }
+    ],
+    "sat": [
+     {
+      "open": "08:00",
+      "close": "13:00"
+     },
+     {
+      "open": "16:30",
+      "close": "19:30"
+     }
+    ],
+    "sun": []
+   },
+   "hours_approximate": false,
+   "open_months": null,
+   "nth_weekend_only": null,
+   "inference_note": null
+  },
+  {
+   "id": "place_047",
+   "weekly_hours": {
+    "mon": [],
+    "tue": [
+     {
+      "open": "12:30",
+      "close": "14:30"
+     },
+     {
+      "open": "19:30",
+      "close": "22:00"
+     }
+    ],
+    "wed": [
+     {
+      "open": "12:30",
+      "close": "14:30"
+     },
+     {
+      "open": "19:30",
+      "close": "22:00"
+     }
+    ],
+    "thu": [
+     {
+      "open": "12:30",
+      "close": "14:30"
+     },
+     {
+      "open": "19:30",
+      "close": "22:00"
+     }
+    ],
+    "fri": [
+     {
+      "open": "12:30",
+      "close": "14:30"
+     },
+     {
+      "open": "19:30",
+      "close": "22:00"
+     }
+    ],
+    "sat": [
+     {
+      "open": "12:30",
+      "close": "14:30"
+     },
+     {
+      "open": "19:30",
+      "close": "22:00"
+     }
+    ],
+    "sun": []
+   },
+   "hours_approximate": false,
+   "open_months": null,
+   "nth_weekend_only": null,
+   "inference_note": null
+  },
+  {
+   "id": "place_048",
+   "weekly_hours": {
+    "mon": [
+     {
+      "open": "09:00",
+      "close": "18:00"
+     }
+    ],
+    "tue": [
+     {
+      "open": "09:00",
+      "close": "18:00"
+     }
+    ],
+    "wed": [
+     {
+      "open": "09:00",
+      "close": "18:00"
+     }
+    ],
+    "thu": [
+     {
+      "open": "09:00",
+      "close": "18:00"
+     }
+    ],
+    "fri": [
+     {
+      "open": "09:00",
+      "close": "18:00"
+     }
+    ],
+    "sat": [
+     {
+      "open": "09:00",
+      "close": "18:00"
+     }
+    ],
+    "sun": [
+     {
+      "open": "09:00",
+      "close": "18:00"
+     }
+    ]
+   },
+   "hours_approximate": false,
+   "open_months": null,
+   "nth_weekend_only": null,
+   "inference_note": null
+  },
+  {
+   "id": "place_049",
+   "weekly_hours": null,
+   "hours_approximate": false,
+   "open_months": null,
+   "nth_weekend_only": null,
+   "inference_note": null
+  },
+  {
+   "id": "place_050",
+   "weekly_hours": {
+    "mon": [],
+    "tue": [
+     {
+      "open": "18:00",
+      "close": "23:00"
+     }
+    ],
+    "wed": [
+     {
+      "open": "18:00",
+      "close": "23:00"
+     }
+    ],
+    "thu": [
+     {
+      "open": "18:00",
+      "close": "23:00"
+     }
+    ],
+    "fri": [
+     {
+      "open": "18:00",
+      "close": "23:00"
+     }
+    ],
+    "sat": [
+     {
+      "open": "18:00",
+      "close": "23:00"
+     }
+    ],
+    "sun": [
+     {
+      "open": "18:00",
+      "close": "23:00"
+     }
+    ]
+   },
+   "hours_approximate": false,
+   "open_months": null,
+   "nth_weekend_only": null,
+   "inference_note": null
+  },
+  {
+   "id": "place_051",
+   "weekly_hours": {
+    "mon": [],
+    "tue": [
+     {
+      "open": "09:00",
+      "close": "19:00"
+     }
+    ],
+    "wed": [
+     {
+      "open": "09:00",
+      "close": "19:00"
+     }
+    ],
+    "thu": [
+     {
+      "open": "09:00",
+      "close": "19:00"
+     }
+    ],
+    "fri": [
+     {
+      "open": "09:00",
+      "close": "19:00"
+     }
+    ],
+    "sat": [
+     {
+      "open": "09:00",
+      "close": "19:00"
+     }
+    ],
+    "sun": [
+     {
+      "open": "09:00",
+      "close": "19:00"
+     }
+    ]
+   },
+   "hours_approximate": false,
+   "open_months": null,
+   "nth_weekend_only": null,
+   "inference_note": null
+  },
+  {
+   "id": "place_052",
+   "weekly_hours": null,
+   "hours_approximate": false,
+   "open_months": null,
+   "nth_weekend_only": null,
+   "inference_note": null
+  },
+  {
+   "id": "place_053",
+   "weekly_hours": {
+    "mon": [
+     {
+      "open": "08:00",
+      "close": "12:00"
+     }
+    ],
+    "tue": [
+     {
+      "open": "08:00",
+      "close": "12:00"
+     }
+    ],
+    "wed": [
+     {
+      "open": "08:00",
+      "close": "12:00"
+     }
+    ],
+    "thu": [
+     {
+      "open": "08:00",
+      "close": "12:00"
+     }
+    ],
+    "fri": [
+     {
+      "open": "08:00",
+      "close": "12:00"
+     }
+    ],
+    "sat": [],
+    "sun": []
+   },
+   "hours_approximate": true,
+   "open_months": null,
+   "nth_weekend_only": null,
+   "inference_note": "Hours field empty; seasonal note says tours run weekday mornings only, mapped to Mon-Fri 08:00-12:00."
+  },
+  {
+   "id": "place_054",
+   "weekly_hours": {
+    "mon": [
+     {
+      "open": "11:00",
+      "close": "23:00"
+     }
+    ],
+    "tue": [
+     {
+      "open": "11:00",
+      "close": "23:00"
+     }
+    ],
+    "wed": [
+     {
+      "open": "11:00",
+      "close": "23:00"
+     }
+    ],
+    "thu": [
+     {
+      "open": "11:00",
+      "close": "23:00"
+     }
+    ],
+    "fri": [
+     {
+      "open": "11:00",
+      "close": "23:00"
+     }
+    ],
+    "sat": [
+     {
+      "open": "11:00",
+      "close": "23:00"
+     }
+    ],
+    "sun": [
+     {
+      "open": "11:00",
+      "close": "23:00"
+     }
+    ]
+   },
+   "hours_approximate": false,
+   "open_months": null,
+   "nth_weekend_only": null,
+   "inference_note": null
+  },
+  {
+   "id": "place_055",
+   "weekly_hours": {
+    "mon": [
+     {
+      "open": "09:00",
+      "close": "18:00"
+     }
+    ],
+    "tue": [
+     {
+      "open": "09:00",
+      "close": "18:00"
+     }
+    ],
+    "wed": [
+     {
+      "open": "09:00",
+      "close": "18:00"
+     }
+    ],
+    "thu": [
+     {
+      "open": "09:00",
+      "close": "18:00"
+     }
+    ],
+    "fri": [
+     {
+      "open": "09:00",
+      "close": "18:00"
+     }
+    ],
+    "sat": [
+     {
+      "open": "09:00",
+      "close": "18:00"
+     }
+    ],
+    "sun": [
+     {
+      "open": "09:00",
+      "close": "18:00"
+     }
+    ]
+   },
+   "hours_approximate": false,
+   "open_months": null,
+   "nth_weekend_only": null,
+   "inference_note": null
+  },
+  {
+   "id": "place_056",
+   "weekly_hours": {
+    "mon": [],
+    "tue": [
+     {
+      "open": "08:15",
+      "close": "19:00"
+     }
+    ],
+    "wed": [
+     {
+      "open": "08:15",
+      "close": "19:00"
+     }
+    ],
+    "thu": [
+     {
+      "open": "08:15",
+      "close": "19:00"
+     }
+    ],
+    "fri": [
+     {
+      "open": "08:15",
+      "close": "19:00"
+     }
+    ],
+    "sat": [
+     {
+      "open": "08:15",
+      "close": "19:00"
+     }
+    ],
+    "sun": [
+     {
+      "open": "08:15",
+      "close": "19:00"
+     }
+    ]
+   },
+   "hours_approximate": false,
+   "open_months": null,
+   "nth_weekend_only": null,
+   "inference_note": null
+  },
+  {
+   "id": "place_057",
+   "weekly_hours": null,
+   "hours_approximate": false,
+   "open_months": null,
+   "nth_weekend_only": null,
+   "inference_note": null
+  },
+  {
+   "id": "place_058",
+   "weekly_hours": {
+    "mon": [],
+    "tue": [
+     {
+      "open": "08:30",
+      "close": "19:15"
+     }
+    ],
+    "wed": [
+     {
+      "open": "08:30",
+      "close": "19:15"
+     }
+    ],
+    "thu": [
+     {
+      "open": "08:30",
+      "close": "19:15"
+     }
+    ],
+    "fri": [
+     {
+      "open": "08:30",
+      "close": "19:15"
+     }
+    ],
+    "sat": [
+     {
+      "open": "08:30",
+      "close": "19:15"
+     }
+    ],
+    "sun": [
+     {
+      "open": "08:30",
+      "close": "19:15"
+     }
+    ]
+   },
+   "hours_approximate": false,
+   "open_months": null,
+   "nth_weekend_only": null,
+   "inference_note": null
+  },
+  {
+   "id": "place_059",
+   "weekly_hours": {
+    "mon": [],
+    "tue": [],
+    "wed": [],
+    "thu": [],
+    "fri": [],
+    "sat": [
+     {
+      "open": "09:00",
+      "close": "19:00"
+     }
+    ],
+    "sun": [
+     {
+      "open": "09:00",
+      "close": "19:00"
+     }
+    ]
+   },
+   "hours_approximate": false,
+   "open_months": null,
+   "nth_weekend_only": 3,
+   "inference_note": "Third weekend of each month only, per seasonal note and description."
+  },
+  {
+   "id": "place_060",
+   "weekly_hours": null,
+   "hours_approximate": false,
+   "open_months": null,
+   "nth_weekend_only": null,
+   "inference_note": null
+  },
+  {
+   "id": "place_061",
+   "weekly_hours": {
+    "mon": [],
+    "tue": [
+     {
+      "open": "12:00",
+      "close": "15:00"
+     },
+     {
+      "open": "19:00",
+      "close": "23:00"
+     }
+    ],
+    "wed": [
+     {
+      "open": "12:00",
+      "close": "15:00"
+     },
+     {
+      "open": "19:00",
+      "close": "23:00"
+     }
+    ],
+    "thu": [
+     {
+      "open": "12:00",
+      "close": "15:00"
+     },
+     {
+      "open": "19:00",
+      "close": "23:00"
+     }
+    ],
+    "fri": [
+     {
+      "open": "12:00",
+      "close": "15:00"
+     },
+     {
+      "open": "19:00",
+      "close": "23:00"
+     }
+    ],
+    "sat": [
+     {
+      "open": "12:00",
+      "close": "15:00"
+     },
+     {
+      "open": "19:00",
+      "close": "23:00"
+     }
+    ],
+    "sun": [
+     {
+      "open": "12:00",
+      "close": "15:00"
+     },
+     {
+      "open": "19:00",
+      "close": "23:00"
+     }
+    ]
+   },
+   "hours_approximate": false,
+   "open_months": null,
+   "nth_weekend_only": null,
+   "inference_note": null
+  },
+  {
+   "id": "place_062",
+   "weekly_hours": {
+    "mon": [
+     {
+      "open": "10:00",
+      "close": "19:00"
+     }
+    ],
+    "tue": [],
+    "wed": [
+     {
+      "open": "10:00",
+      "close": "19:00"
+     }
+    ],
+    "thu": [
+     {
+      "open": "10:00",
+      "close": "19:00"
+     }
+    ],
+    "fri": [
+     {
+      "open": "10:00",
+      "close": "19:00"
+     }
+    ],
+    "sat": [
+     {
+      "open": "10:00",
+      "close": "19:00"
+     }
+    ],
+    "sun": [
+     {
+      "open": "10:00",
+      "close": "19:00"
+     }
+    ]
+   },
+   "hours_approximate": false,
+   "open_months": null,
+   "nth_weekend_only": null,
+   "inference_note": null
+  },
+  {
+   "id": "place_063",
+   "weekly_hours": null,
+   "hours_approximate": false,
+   "open_months": [
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+   ],
+   "nth_weekend_only": null,
+   "inference_note": "April-October season from seasonal notes."
+  },
+  {
+   "id": "place_064",
+   "weekly_hours": {
+    "mon": [],
+    "tue": [
+     {
+      "open": "10:00",
+      "close": "18:00"
+     }
+    ],
+    "wed": [],
+    "thu": [
+     {
+      "open": "10:00",
+      "close": "18:00"
+     }
+    ],
+    "fri": [
+     {
+      "open": "10:00",
+      "close": "18:00"
+     }
+    ],
+    "sat": [
+     {
+      "open": "10:00",
+      "close": "18:00"
+     }
+    ],
+    "sun": [
+     {
+      "open": "10:00",
+      "close": "18:00"
+     }
+    ]
+   },
+   "hours_approximate": false,
+   "open_months": [
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+   ],
+   "nth_weekend_only": null,
+   "inference_note": "April-October season from seasonal notes."
+  },
+  {
+   "id": "place_065",
+   "weekly_hours": {
+    "mon": [],
+    "tue": [],
+    "wed": [
+     {
+      "open": "12:30",
+      "close": "23:30"
+     }
+    ],
+    "thu": [
+     {
+      "open": "12:30",
+      "close": "23:30"
+     }
+    ],
+    "fri": [
+     {
+      "open": "12:30",
+      "close": "23:30"
+     }
+    ],
+    "sat": [
+     {
+      "open": "12:30",
+      "close": "23:30"
+     }
+    ],
+    "sun": [
+     {
+      "open": "12:30",
+      "close": "23:30"
+     }
+    ]
+   },
+   "hours_approximate": false,
+   "open_months": [
+    5,
+    6,
+    7,
+    8,
+    9
+   ],
+   "nth_weekend_only": null,
+   "inference_note": "Rooftop open May-September only, per seasonal notes."
+  },
+  {
+   "id": "place_066",
+   "weekly_hours": null,
+   "hours_approximate": false,
+   "open_months": null,
+   "nth_weekend_only": null,
+   "inference_note": null
+  },
+  {
+   "id": "place_067",
+   "weekly_hours": {
+    "mon": [
+     {
+      "open": "09:00",
+      "close": "19:00"
+     }
+    ],
+    "tue": [
+     {
+      "open": "09:00",
+      "close": "19:00"
+     }
+    ],
+    "wed": [
+     {
+      "open": "09:00",
+      "close": "19:00"
+     }
+    ],
+    "thu": [
+     {
+      "open": "09:00",
+      "close": "19:00"
+     }
+    ],
+    "fri": [
+     {
+      "open": "09:00",
+      "close": "19:00"
+     }
+    ],
+    "sat": [
+     {
+      "open": "09:00",
+      "close": "19:00"
+     }
+    ],
+    "sun": [
+     {
+      "open": "09:00",
+      "close": "19:00"
+     }
+    ]
+   },
+   "hours_approximate": false,
+   "open_months": null,
+   "nth_weekend_only": null,
+   "inference_note": null
+  },
+  {
+   "id": "place_068",
+   "weekly_hours": {
+    "mon": [
+     {
+      "open": "18:00",
+      "close": "24:00"
+     }
+    ],
+    "tue": [
+     {
+      "open": "18:00",
+      "close": "24:00"
+     }
+    ],
+    "wed": [
+     {
+      "open": "18:00",
+      "close": "24:00"
+     }
+    ],
+    "thu": [
+     {
+      "open": "18:00",
+      "close": "24:00"
+     }
+    ],
+    "fri": [
+     {
+      "open": "18:00",
+      "close": "24:00"
+     }
+    ],
+    "sat": [
+     {
+      "open": "18:00",
+      "close": "24:00"
+     }
+    ],
+    "sun": [
+     {
+      "open": "18:00",
+      "close": "24:00"
+     }
+    ]
+   },
+   "hours_approximate": true,
+   "open_months": null,
+   "nth_weekend_only": null,
+   "inference_note": null
+  },
+  {
+   "id": "place_069",
+   "weekly_hours": {
+    "mon": [
+     {
+      "open": "10:00",
+      "close": "18:00"
+     }
+    ],
+    "tue": [],
+    "wed": [
+     {
+      "open": "10:00",
+      "close": "18:00"
+     }
+    ],
+    "thu": [
+     {
+      "open": "10:00",
+      "close": "18:00"
+     }
+    ],
+    "fri": [
+     {
+      "open": "10:00",
+      "close": "18:00"
+     }
+    ],
+    "sat": [
+     {
+      "open": "10:00",
+      "close": "18:00"
+     }
+    ],
+    "sun": [
+     {
+      "open": "10:00",
+      "close": "18:00"
+     }
+    ]
+   },
+   "hours_approximate": false,
+   "open_months": null,
+   "nth_weekend_only": null,
+   "inference_note": null
+  },
+  {
+   "id": "place_070",
+   "weekly_hours": null,
+   "hours_approximate": false,
+   "open_months": null,
+   "nth_weekend_only": null,
+   "inference_note": null
+  },
+  {
+   "id": "place_071",
+   "weekly_hours": null,
+   "hours_approximate": false,
+   "open_months": null,
+   "nth_weekend_only": null,
+   "inference_note": null
+  },
+  {
+   "id": "place_072",
+   "weekly_hours": null,
+   "hours_approximate": false,
+   "open_months": null,
+   "nth_weekend_only": null,
+   "inference_note": null
+  },
+  {
+   "id": "place_073",
+   "weekly_hours": {
+    "mon": [],
+    "tue": [
+     {
+      "open": "12:30",
+      "close": "14:30"
+     },
+     {
+      "open": "19:00",
+      "close": "22:00"
+     }
+    ],
+    "wed": [
+     {
+      "open": "12:30",
+      "close": "14:30"
+     },
+     {
+      "open": "19:00",
+      "close": "22:00"
+     }
+    ],
+    "thu": [
+     {
+      "open": "12:30",
+      "close": "14:30"
+     },
+     {
+      "open": "19:00",
+      "close": "22:00"
+     }
+    ],
+    "fri": [
+     {
+      "open": "12:30",
+      "close": "14:30"
+     },
+     {
+      "open": "19:00",
+      "close": "22:00"
+     }
+    ],
+    "sat": [
+     {
+      "open": "12:30",
+      "close": "14:30"
+     },
+     {
+      "open": "19:00",
+      "close": "22:00"
+     }
+    ],
+    "sun": [
+     {
+      "open": "12:30",
+      "close": "14:30"
+     },
+     {
+      "open": "19:00",
+      "close": "22:00"
+     }
+    ]
+   },
+   "hours_approximate": false,
+   "open_months": null,
+   "nth_weekend_only": null,
+   "inference_note": null
+  },
+  {
+   "id": "place_074",
+   "weekly_hours": {
+    "mon": [
+     {
+      "open": "09:30",
+      "close": "17:15"
+     }
+    ],
+    "tue": [
+     {
+      "open": "09:30",
+      "close": "17:15"
+     }
+    ],
+    "wed": [
+     {
+      "open": "09:30",
+      "close": "17:15"
+     }
+    ],
+    "thu": [
+     {
+      "open": "09:30",
+      "close": "17:15"
+     }
+    ],
+    "fri": [
+     {
+      "open": "09:30",
+      "close": "17:15"
+     }
+    ],
+    "sat": [
+     {
+      "open": "09:30",
+      "close": "17:15"
+     }
+    ],
+    "sun": [
+     {
+      "open": "14:00",
+      "close": "17:00"
+     }
+    ]
+   },
+   "hours_approximate": false,
+   "open_months": null,
+   "nth_weekend_only": null,
+   "inference_note": null
+  },
+  {
+   "id": "place_075",
+   "weekly_hours": null,
+   "hours_approximate": false,
+   "open_months": null,
+   "nth_weekend_only": null,
+   "inference_note": null
+  },
+  {
+   "id": "place_076",
+   "weekly_hours": {
+    "mon": [
+     {
+      "open": "11:00",
+      "close": "21:00"
+     }
+    ],
+    "tue": [
+     {
+      "open": "11:00",
+      "close": "21:00"
+     }
+    ],
+    "wed": [
+     {
+      "open": "11:00",
+      "close": "21:00"
+     }
+    ],
+    "thu": [
+     {
+      "open": "11:00",
+      "close": "21:00"
+     }
+    ],
+    "fri": [
+     {
+      "open": "11:00",
+      "close": "21:00"
+     }
+    ],
+    "sat": [
+     {
+      "open": "11:00",
+      "close": "21:00"
+     }
+    ],
+    "sun": []
+   },
+   "hours_approximate": false,
+   "open_months": null,
+   "nth_weekend_only": null,
+   "inference_note": null
+  },
+  {
+   "id": "place_077",
+   "weekly_hours": null,
+   "hours_approximate": false,
+   "open_months": null,
+   "nth_weekend_only": null,
+   "inference_note": null
+  },
+  {
+   "id": "place_078",
+   "weekly_hours": {
+    "mon": [
+     {
+      "open": "10:00",
+      "close": "20:00"
+     }
+    ],
+    "tue": [
+     {
+      "open": "10:00",
+      "close": "20:00"
+     }
+    ],
+    "wed": [
+     {
+      "open": "10:00",
+      "close": "20:00"
+     }
+    ],
+    "thu": [
+     {
+      "open": "10:00",
+      "close": "20:00"
+     }
+    ],
+    "fri": [
+     {
+      "open": "10:00",
+      "close": "20:00"
+     }
+    ],
+    "sat": [
+     {
+      "open": "10:00",
+      "close": "20:00"
+     }
+    ],
+    "sun": []
+   },
+   "hours_approximate": false,
+   "open_months": null,
+   "nth_weekend_only": null,
+   "inference_note": null
+  },
+  {
+   "id": "place_079",
+   "weekly_hours": {
+    "mon": [
+     {
+      "open": "18:00",
+      "close": "02:00"
+     }
+    ],
+    "tue": [
+     {
+      "open": "18:00",
+      "close": "02:00"
+     }
+    ],
+    "wed": [
+     {
+      "open": "18:00",
+      "close": "02:00"
+     }
+    ],
+    "thu": [
+     {
+      "open": "18:00",
+      "close": "02:00"
+     }
+    ],
+    "fri": [
+     {
+      "open": "18:00",
+      "close": "02:00"
+     }
+    ],
+    "sat": [
+     {
+      "open": "18:00",
+      "close": "02:00"
+     }
+    ],
+    "sun": [
+     {
+      "open": "18:00",
+      "close": "02:00"
+     }
+    ]
+   },
+   "hours_approximate": true,
+   "open_months": null,
+   "nth_weekend_only": null,
+   "inference_note": "Closing time of 02:00 from description ('Open until 2am'); opening time still vague ('Evenings')."
+  },
+  {
+   "id": "place_080",
+   "weekly_hours": null,
+   "hours_approximate": false,
+   "open_months": null,
+   "nth_weekend_only": null,
+   "inference_note": null
+  },
+  {
+   "id": "place_081",
+   "weekly_hours": {
+    "mon": [],
+    "tue": [
+     {
+      "open": "08:15",
+      "close": "18:50"
+     }
+    ],
+    "wed": [
+     {
+      "open": "08:15",
+      "close": "18:50"
+     }
+    ],
+    "thu": [
+     {
+      "open": "08:15",
+      "close": "18:50"
+     }
+    ],
+    "fri": [
+     {
+      "open": "08:15",
+      "close": "18:50"
+     }
+    ],
+    "sat": [
+     {
+      "open": "08:15",
+      "close": "18:50"
+     }
+    ],
+    "sun": [
+     {
+      "open": "08:15",
+      "close": "18:50"
+     }
+    ]
+   },
+   "hours_approximate": false,
+   "open_months": null,
+   "nth_weekend_only": null,
+   "inference_note": null
+  },
+  {
+   "id": "place_082",
+   "weekly_hours": {
+    "mon": [
+     {
+      "open": "12:00",
+      "close": "23:00"
+     }
+    ],
+    "tue": [
+     {
+      "open": "12:00",
+      "close": "23:00"
+     }
+    ],
+    "wed": [
+     {
+      "open": "12:00",
+      "close": "23:00"
+     }
+    ],
+    "thu": [
+     {
+      "open": "12:00",
+      "close": "23:00"
+     }
+    ],
+    "fri": [
+     {
+      "open": "12:00",
+      "close": "23:00"
+     }
+    ],
+    "sat": [
+     {
+      "open": "12:00",
+      "close": "23:00"
+     }
+    ],
+    "sun": [
+     {
+      "open": "12:00",
+      "close": "23:00"
+     }
+    ]
+   },
+   "hours_approximate": false,
+   "open_months": null,
+   "nth_weekend_only": null,
+   "inference_note": null
+  },
+  {
+   "id": "place_083",
+   "weekly_hours": {
+    "mon": [
+     {
+      "open": "10:00",
+      "close": "18:00"
+     }
+    ],
+    "tue": [
+     {
+      "open": "10:00",
+      "close": "18:00"
+     }
+    ],
+    "wed": [
+     {
+      "open": "10:00",
+      "close": "18:00"
+     }
+    ],
+    "thu": [
+     {
+      "open": "10:00",
+      "close": "18:00"
+     }
+    ],
+    "fri": [
+     {
+      "open": "10:00",
+      "close": "18:00"
+     }
+    ],
+    "sat": [
+     {
+      "open": "10:00",
+      "close": "18:00"
+     }
+    ],
+    "sun": []
+   },
+   "hours_approximate": false,
+   "open_months": null,
+   "nth_weekend_only": null,
+   "inference_note": null
+  },
+  {
+   "id": "place_084",
+   "weekly_hours": null,
+   "hours_approximate": false,
+   "open_months": null,
+   "nth_weekend_only": null,
+   "inference_note": null
+  },
+  {
+   "id": "place_085",
+   "weekly_hours": null,
+   "hours_approximate": false,
+   "open_months": [
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+   ],
+   "nth_weekend_only": null,
+   "inference_note": "Months from seasonal note: open April-October only."
+  },
+  {
+   "id": "place_086",
+   "weekly_hours": {
+    "mon": [],
+    "tue": [
+     {
+      "open": "10:00",
+      "close": "19:30"
+     }
+    ],
+    "wed": [
+     {
+      "open": "10:00",
+      "close": "19:30"
+     }
+    ],
+    "thu": [
+     {
+      "open": "10:00",
+      "close": "19:30"
+     }
+    ],
+    "fri": [
+     {
+      "open": "10:00",
+      "close": "19:30"
+     }
+    ],
+    "sat": [
+     {
+      "open": "10:00",
+      "close": "19:30"
+     }
+    ],
+    "sun": [
+     {
+      "open": "10:00",
+      "close": "19:30"
+     }
+    ]
+   },
+   "hours_approximate": false,
+   "open_months": null,
+   "nth_weekend_only": null,
+   "inference_note": null
+  },
+  {
+   "id": "place_087",
+   "weekly_hours": {
+    "mon": [
+     {
+      "open": "09:00",
+      "close": "12:30"
+     }
+    ],
+    "tue": [
+     {
+      "open": "09:00",
+      "close": "12:30"
+     }
+    ],
+    "wed": [
+     {
+      "open": "09:00",
+      "close": "12:30"
+     }
+    ],
+    "thu": [
+     {
+      "open": "09:00",
+      "close": "12:30"
+     }
+    ],
+    "fri": [
+     {
+      "open": "09:00",
+      "close": "12:30"
+     }
+    ],
+    "sat": [
+     {
+      "open": "09:00",
+      "close": "12:30"
+     }
+    ],
+    "sun": [
+     {
+      "open": "09:00",
+      "close": "12:30"
+     }
+    ]
+   },
+   "hours_approximate": false,
+   "open_months": null,
+   "nth_weekend_only": null,
+   "inference_note": null
+  },
+  {
+   "id": "place_088",
+   "weekly_hours": {
+    "mon": [
+     {
+      "open": "09:30",
+      "close": "17:30"
+     }
+    ],
+    "tue": [
+     {
+      "open": "09:30",
+      "close": "17:30"
+     }
+    ],
+    "wed": [
+     {
+      "open": "09:30",
+      "close": "17:30"
+     }
+    ],
+    "thu": [
+     {
+      "open": "09:30",
+      "close": "17:30"
+     }
+    ],
+    "fri": [
+     {
+      "open": "09:30",
+      "close": "17:30"
+     }
+    ],
+    "sat": [
+     {
+      "open": "09:30",
+      "close": "17:30"
+     }
+    ],
+    "sun": [
+     {
+      "open": "09:30",
+      "close": "17:30"
+     }
+    ]
+   },
+   "hours_approximate": false,
+   "open_months": null,
+   "nth_weekend_only": null,
+   "inference_note": null
+  },
+  {
+   "id": "place_089",
+   "weekly_hours": null,
+   "hours_approximate": false,
+   "open_months": null,
+   "nth_weekend_only": null,
+   "inference_note": null
+  },
+  {
+   "id": "place_090",
+   "weekly_hours": null,
+   "hours_approximate": false,
+   "open_months": [
+    10
+   ],
+   "nth_weekend_only": null,
+   "inference_note": "Months from seasonal note: October only."
+  },
+  {
+   "id": "place_091",
+   "weekly_hours": {
+    "mon": [
+     {
+      "open": "10:00",
+      "close": "23:00"
+     }
+    ],
+    "tue": [
+     {
+      "open": "10:00",
+      "close": "23:00"
+     }
+    ],
+    "wed": [
+     {
+      "open": "10:00",
+      "close": "23:00"
+     }
+    ],
+    "thu": [
+     {
+      "open": "10:00",
+      "close": "23:00"
+     }
+    ],
+    "fri": [
+     {
+      "open": "10:00",
+      "close": "23:00"
+     }
+    ],
+    "sat": [
+     {
+      "open": "10:00",
+      "close": "23:00"
+     }
+    ],
+    "sun": [
+     {
+      "open": "10:00",
+      "close": "23:00"
+     }
+    ]
+   },
+   "hours_approximate": false,
+   "open_months": null,
+   "nth_weekend_only": null,
+   "inference_note": null
+  },
+  {
+   "id": "place_092",
+   "weekly_hours": {
+    "mon": [
+     {
+      "open": "12:00",
+      "close": "14:30"
+     }
+    ],
+    "tue": [
+     {
+      "open": "12:00",
+      "close": "14:30"
+     }
+    ],
+    "wed": [
+     {
+      "open": "12:00",
+      "close": "14:30"
+     }
+    ],
+    "thu": [
+     {
+      "open": "12:00",
+      "close": "14:30"
+     }
+    ],
+    "fri": [
+     {
+      "open": "12:00",
+      "close": "14:30"
+     }
+    ],
+    "sat": [
+     {
+      "open": "12:00",
+      "close": "14:30"
+     }
+    ],
+    "sun": []
+   },
+   "hours_approximate": false,
+   "open_months": null,
+   "nth_weekend_only": null,
+   "inference_note": null
+  },
+  {
+   "id": "place_093",
+   "weekly_hours": null,
+   "hours_approximate": false,
+   "open_months": null,
+   "nth_weekend_only": null,
+   "inference_note": null
+  },
+  {
+   "id": "place_094",
+   "weekly_hours": {
+    "mon": [
+     {
+      "open": "09:00",
+      "close": "21:00"
+     }
+    ],
+    "tue": [
+     {
+      "open": "09:00",
+      "close": "21:00"
+     }
+    ],
+    "wed": [
+     {
+      "open": "09:00",
+      "close": "21:00"
+     }
+    ],
+    "thu": [
+     {
+      "open": "09:00",
+      "close": "21:00"
+     }
+    ],
+    "fri": [
+     {
+      "open": "09:00",
+      "close": "21:00"
+     }
+    ],
+    "sat": [
+     {
+      "open": "09:00",
+      "close": "21:00"
+     }
+    ],
+    "sun": [
+     {
+      "open": "09:00",
+      "close": "21:00"
+     }
+    ]
+   },
+   "hours_approximate": false,
+   "open_months": null,
+   "nth_weekend_only": null,
+   "inference_note": null
+  },
+  {
+   "id": "place_095",
+   "weekly_hours": {
+    "mon": [
+     {
+      "open": "09:00",
+      "close": "19:00"
+     }
+    ],
+    "tue": [
+     {
+      "open": "09:00",
+      "close": "19:00"
+     }
+    ],
+    "wed": [
+     {
+      "open": "09:00",
+      "close": "19:00"
+     }
+    ],
+    "thu": [
+     {
+      "open": "09:00",
+      "close": "19:00"
+     }
+    ],
+    "fri": [
+     {
+      "open": "09:00",
+      "close": "19:00"
+     }
+    ],
+    "sat": [
+     {
+      "open": "09:00",
+      "close": "19:00"
+     }
+    ],
+    "sun": [
+     {
+      "open": "09:00",
+      "close": "19:00"
+     }
+    ]
+   },
+   "hours_approximate": false,
+   "open_months": null,
+   "nth_weekend_only": null,
+   "inference_note": null
+  },
+  {
+   "id": "place_096",
+   "weekly_hours": {
+    "mon": [
+     {
+      "open": "09:00",
+      "close": "23:00"
+     }
+    ],
+    "tue": [
+     {
+      "open": "09:00",
+      "close": "23:00"
+     }
+    ],
+    "wed": [
+     {
+      "open": "09:00",
+      "close": "23:00"
+     }
+    ],
+    "thu": [
+     {
+      "open": "09:00",
+      "close": "23:00"
+     }
+    ],
+    "fri": [
+     {
+      "open": "09:00",
+      "close": "23:00"
+     }
+    ],
+    "sat": [
+     {
+      "open": "09:00",
+      "close": "23:00"
+     }
+    ],
+    "sun": [
+     {
+      "open": "09:00",
+      "close": "23:00"
+     }
+    ]
+   },
+   "hours_approximate": false,
+   "open_months": null,
+   "nth_weekend_only": null,
+   "inference_note": null
+  },
+  {
+   "id": "place_097",
+   "weekly_hours": null,
+   "hours_approximate": false,
+   "open_months": null,
+   "nth_weekend_only": null,
+   "inference_note": null
+  },
+  {
+   "id": "place_098",
+   "weekly_hours": {
+    "mon": [
+     {
+      "open": "10:00",
+      "close": "12:00"
+     },
+     {
+      "open": "14:30",
+      "close": "18:00"
+     }
+    ],
+    "tue": [
+     {
+      "open": "10:00",
+      "close": "12:00"
+     },
+     {
+      "open": "14:30",
+      "close": "18:00"
+     }
+    ],
+    "wed": [
+     {
+      "open": "10:00",
+      "close": "12:00"
+     },
+     {
+      "open": "14:30",
+      "close": "18:00"
+     }
+    ],
+    "thu": [
+     {
+      "open": "10:00",
+      "close": "12:00"
+     },
+     {
+      "open": "14:30",
+      "close": "18:00"
+     }
+    ],
+    "fri": [
+     {
+      "open": "10:00",
+      "close": "12:00"
+     },
+     {
+      "open": "14:30",
+      "close": "18:00"
+     }
+    ],
+    "sat": [
+     {
+      "open": "10:00",
+      "close": "12:00"
+     },
+     {
+      "open": "14:30",
+      "close": "18:00"
+     }
+    ],
+    "sun": []
+   },
+   "hours_approximate": false,
+   "open_months": null,
+   "nth_weekend_only": null,
+   "inference_note": null
+  },
+  {
+   "id": "place_099",
+   "weekly_hours": {
+    "mon": [
+     {
+      "open": "09:00",
+      "close": "24:00"
+     }
+    ],
+    "tue": [
+     {
+      "open": "09:00",
+      "close": "24:00"
+     }
+    ],
+    "wed": [
+     {
+      "open": "09:00",
+      "close": "24:00"
+     }
+    ],
+    "thu": [
+     {
+      "open": "09:00",
+      "close": "24:00"
+     }
+    ],
+    "fri": [
+     {
+      "open": "09:00",
+      "close": "24:00"
+     }
+    ],
+    "sat": [
+     {
+      "open": "09:00",
+      "close": "24:00"
+     }
+    ],
+    "sun": [
+     {
+      "open": "09:00",
+      "close": "24:00"
+     }
+    ]
+   },
+   "hours_approximate": false,
+   "open_months": null,
+   "nth_weekend_only": null,
+   "inference_note": null
+  },
+  {
+   "id": "place_100",
+   "weekly_hours": {
+    "mon": [
+     {
+      "open": "18:00",
+      "close": "24:00"
+     }
+    ],
+    "tue": [
+     {
+      "open": "18:00",
+      "close": "24:00"
+     }
+    ],
+    "wed": [
+     {
+      "open": "18:00",
+      "close": "24:00"
+     }
+    ],
+    "thu": [
+     {
+      "open": "18:00",
+      "close": "24:00"
+     }
+    ],
+    "fri": [
+     {
+      "open": "18:00",
+      "close": "24:00"
+     }
+    ],
+    "sat": [
+     {
+      "open": "18:00",
+      "close": "24:00"
+     }
+    ],
+    "sun": [
+     {
+      "open": "18:00",
+      "close": "24:00"
+     }
+    ]
+   },
+   "hours_approximate": true,
+   "open_months": null,
+   "nth_weekend_only": null,
+   "inference_note": null
+  },
+  {
+   "id": "place_101",
+   "weekly_hours": {
+    "mon": [
+     {
+      "open": "08:15",
+      "close": "13:50"
+     }
+    ],
+    "tue": [
+     {
+      "open": "08:15",
+      "close": "13:50"
+     }
+    ],
+    "wed": [
+     {
+      "open": "08:15",
+      "close": "13:50"
+     }
+    ],
+    "thu": [
+     {
+      "open": "08:15",
+      "close": "13:50"
+     }
+    ],
+    "fri": [
+     {
+      "open": "08:15",
+      "close": "13:50"
+     }
+    ],
+    "sat": [
+     {
+      "open": "08:15",
+      "close": "13:50"
+     }
+    ],
+    "sun": [
+     {
+      "open": "08:15",
+      "close": "13:50"
+     }
+    ]
+   },
+   "hours_approximate": false,
+   "open_months": null,
+   "nth_weekend_only": null,
+   "inference_note": null
+  },
+  {
+   "id": "place_102",
+   "weekly_hours": null,
+   "hours_approximate": false,
+   "open_months": null,
+   "nth_weekend_only": null,
+   "inference_note": null
+  },
+  {
+   "id": "place_103",
+   "weekly_hours": {
+    "mon": [
+     {
+      "open": "09:00",
+      "close": "23:00"
+     }
+    ],
+    "tue": [
+     {
+      "open": "09:00",
+      "close": "23:00"
+     }
+    ],
+    "wed": [
+     {
+      "open": "09:00",
+      "close": "23:00"
+     }
+    ],
+    "thu": [
+     {
+      "open": "09:00",
+      "close": "23:00"
+     }
+    ],
+    "fri": [
+     {
+      "open": "09:00",
+      "close": "23:00"
+     }
+    ],
+    "sat": [
+     {
+      "open": "09:00",
+      "close": "23:00"
+     }
+    ],
+    "sun": [
+     {
+      "open": "09:00",
+      "close": "23:00"
+     }
+    ]
+   },
+   "hours_approximate": false,
+   "open_months": null,
+   "nth_weekend_only": null,
+   "inference_note": null
+  }
+ ]
+}

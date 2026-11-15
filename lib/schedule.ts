@@ -4,7 +4,14 @@
 
 import { PLACES_BY_ID, formatMinutes, type Place, type Window } from "@/lib/places";
 import {
-  baseCenter, distanceKm, isBaseCity, isReachable, nearestBase, travelBetween, travelMinutes, type BaseCity,
+  baseCenter,
+  distanceKm,
+  isBaseCity,
+  isReachable,
+  nearestBase,
+  travelBetween,
+  travelMinutes,
+  type BaseCity,
 } from "@/lib/geo";
 import type { Plan, PlannedDay } from "@/lib/schemas";
 
@@ -61,12 +68,14 @@ export function weekdayName(date: string): string {
   return WEEKDAYS[dateParts(date).weekday];
 }
 
-/** Third Saturday falls on the 15th-21st; the Sunday after it on the 16th-22nd. */
-function isThirdWeekend(date: string): boolean {
+/** The nth Saturday of a month falls on days 7n-6 to 7n; its Sunday is the day after. */
+function isNthWeekend(date: string, n: number): boolean {
   const { weekday, dayOfMonth } = dateParts(date);
-  return (weekday === 6 && dayOfMonth >= 15 && dayOfMonth <= 21) ||
-    (weekday === 0 && dayOfMonth >= 16 && dayOfMonth <= 22);
+  const saturday = weekday === 6 ? dayOfMonth : weekday === 0 ? dayOfMonth - 1 : null;
+  return saturday !== null && saturday >= 7 * n - 6 && saturday <= 7 * n;
 }
+
+const ORDINALS = ["", "first", "second", "third", "fourth", "fifth"];
 
 // ---------- Fitting a stop into opening hours ----------
 
@@ -79,19 +88,28 @@ function windowsOn(place: Place, weekday: number): Window[] | null {
 /**
  * Earliest start at or after `arrive`.
  * Restaurants: lunch from 12:00, dinner from 19:00, and you must sit down 30 min before closing.
+ * Vague hours ("Evenings", "weekday mornings"): you only need to arrive 30 min before they end,
+ * because there is no real closing time to finish before.
  * Everything else: the whole visit must finish before closing.
  */
 function earliestStart(place: Place, arrive: number, weekday: number): number | null {
   const isMeal = place.type === "restaurant";
+  const mustFinish = !isMeal && place.hours.kind === "fixed";
   let from = arrive;
-  if (isMeal) from = Math.max(from, from < 15 * 60 ? LUNCH_FROM : DINNER_FROM);
+  if (isMeal) {
+    from = Math.max(from, from < 15 * 60 ? LUNCH_FROM : DINNER_FROM);
+  }
 
   const windows = windowsOn(place, weekday);
-  if (!windows) return from;
+  if (!windows) {
+    return from;
+  }
   for (const w of [...windows].sort((a, b) => a.open - b.open)) {
     const start = Math.max(from, w.open);
-    const latestOk = isMeal ? w.close - 30 : w.close - place.durationMinutes;
-    if (start <= latestOk) return start;
+    const latestOk = mustFinish ? w.close - place.durationMinutes : w.close - 30;
+    if (start <= latestOk) {
+      return start;
+    }
   }
   return null;
 }
@@ -99,8 +117,12 @@ function earliestStart(place: Place, arrive: number, weekday: number): number | 
 /** Facts about a place the traveler should see regardless of scheduling. */
 function placeIssues(place: Place): Issue[] {
   const issues: Issue[] = place.notes.map((message) => ({ severity: "warning" as const, message }));
-  if (place.bookingRequired) issues.push({ severity: "info", message: "Book ahead." });
-  if (place.seasonalNote) issues.push({ severity: "info", message: place.seasonalNote });
+  if (place.bookingRequired) {
+    issues.push({ severity: "info", message: "Book ahead." });
+  }
+  if (place.seasonalNote) {
+    issues.push({ severity: "info", message: place.seasonalNote });
+  }
   return issues;
 }
 
@@ -122,7 +144,9 @@ export function scheduleDay(planned: PlannedDay, date: string, bases: BaseCity[]
     const issues = placeIssues(place);
     const fail = (message: string) => issues.unshift({ severity: "error", message });
 
-    if (place.excludedReason) fail(`Not recommended: ${place.excludedReason}`);
+    if (place.excludedReason) {
+      fail(`Not recommended: ${place.excludedReason}`);
+    }
     if (bases.length && !bases.some((b) => isReachable(place, b))) {
       fail(`${place.city} is too far from ${bases.join(" / ")} for a day trip.`);
     }
@@ -130,8 +154,8 @@ export function scheduleDay(planned: PlannedDay, date: string, bases: BaseCity[]
       const range = `${MONTHS[place.openMonths[0] - 1]}-${MONTHS[place.openMonths.at(-1)! - 1]}`;
       fail(`Closed in ${MONTHS[month - 1]} (open ${range} only).`);
     }
-    if (place.thirdWeekendOnly && !isThirdWeekend(date)) {
-      fail("Only runs on the third weekend of the month.");
+    if (place.nthWeekendOnly && !isNthWeekend(date, place.nthWeekendOnly)) {
+      fail(`Only runs on the ${ORDINALS[place.nthWeekendOnly]} weekend of the month.`);
     }
 
     const travelBefore = prev ? travelBetween(prev, place) : 0;
@@ -150,7 +174,10 @@ export function scheduleDay(planned: PlannedDay, date: string, bases: BaseCity[]
   // Whole-day checks
   const awayCities = new Set(stops.map((s) => s.place.city).filter((c) => !isBaseCity(c)));
   if (awayCities.size > 1) {
-    dayIssues.push({ severity: "error", message: `Too many towns in one day: ${[...awayCities].join(", ")}.` });
+    dayIssues.push({
+      severity: "error",
+      message: `Too many towns in one day: ${[...awayCities].join(", ")}.`,
+    });
   }
   const last = stops.at(-1);
   if (last && bases.length) {
@@ -167,7 +194,10 @@ export function scheduleDay(planned: PlannedDay, date: string, bases: BaseCity[]
   }
   const travelTotal = stops.reduce((sum, s) => sum + s.travelBefore, 0);
   if (travelTotal > HEAVY_TRAVEL_MIN) {
-    dayIssues.push({ severity: "warning", message: `About ${Math.round(travelTotal / 60)}h of travel today.` });
+    dayIssues.push({
+      severity: "warning",
+      message: `About ${Math.round(travelTotal / 60)}h of travel today.`,
+    });
   }
   const isFoodStop = (s: ScheduledStop) =>
     ["restaurant", "cafe", "market"].includes(s.place.type) || s.place.tags.includes("food");
@@ -181,8 +211,12 @@ export function scheduleDay(planned: PlannedDay, date: string, bases: BaseCity[]
 export function scheduleTrip(plan: Plan, startDate: string): ScheduledTrip {
   const bases = plan.bases.filter(isBaseCity);
   const issues: Issue[] = [];
-  if (bases.length === 0) issues.push({ severity: "error", message: "No valid base city." });
-  if (plan.days.length !== 3) issues.push({ severity: "error", message: `Plan has ${plan.days.length} days, not 3.` });
+  if (bases.length === 0) {
+    issues.push({ severity: "error", message: "No valid base city." });
+  }
+  if (plan.days.length !== 3) {
+    issues.push({ severity: "error", message: `Plan has ${plan.days.length} days, not 3.` });
+  }
 
   const days = plan.days.map((d, i) => scheduleDay(d, addDays(startDate, i), bases));
 
@@ -204,10 +238,16 @@ export function scheduleTrip(plan: Plan, startDate: string): ScheduledTrip {
 export function errorReport(trip: ScheduledTrip): string[] {
   const out = trip.issues.filter((i) => i.severity === "error").map((i) => i.message);
   trip.days.forEach((day, d) => {
-    for (const i of day.issues) if (i.severity === "error") out.push(`Day ${d + 1}: ${i.message}`);
+    for (const i of day.issues) {
+      if (i.severity === "error") {
+        out.push(`Day ${d + 1}: ${i.message}`);
+      }
+    }
     day.stops.forEach((s) => {
       for (const i of s.issues) {
-        if (i.severity === "error") out.push(`Day ${d + 1}, ${s.place.name} (${s.place.id}): ${i.message}`);
+        if (i.severity === "error") {
+          out.push(`Day ${d + 1}, ${s.place.name} (${s.place.id}): ${i.message}`);
+        }
       }
     });
   });
@@ -233,9 +273,7 @@ export function dropInvalidStops(plan: Plan, startDate: string): { plan: Plan; r
     current.days = current.days.map((day, d) => {
       const scheduled = trip.days[d];
       const bad = new Set(
-        scheduled.stops
-          .filter((s) => s.issues.some((i) => i.severity === "error"))
-          .map((s) => s.place.id),
+        scheduled.stops.filter((s) => s.issues.some((i) => i.severity === "error")).map((s) => s.place.id),
       );
       let stops = day.stops.filter((s) => {
         if (bad.has(s.place_id) || !PLACES_BY_ID.has(s.place_id)) {
@@ -247,15 +285,23 @@ export function dropInvalidStops(plan: Plan, startDate: string): { plan: Plan; r
         }
         return true;
       });
-      if (stops.length === day.stops.length && scheduled.issues.some((i) => i.severity === "error") && stops.length) {
+      if (
+        stops.length === day.stops.length &&
+        scheduled.issues.some((i) => i.severity === "error") &&
+        stops.length
+      ) {
         const last = scheduled.stops.at(-1)!;
         removed.push(`${last.place.name}: ${scheduled.issues.find((i) => i.severity === "error")!.message}`);
         stops = stops.slice(0, -1);
       }
-      if (stops.length !== day.stops.length) changed = true;
+      if (stops.length !== day.stops.length) {
+        changed = true;
+      }
       return { ...day, stops };
     });
-    if (!changed) break;
+    if (!changed) {
+      break;
+    }
   }
   return { plan: current, removed };
 }

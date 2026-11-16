@@ -81,12 +81,26 @@ function windowsOn(place: Place, weekday: number): Window[] | null {
  * Vague hours ("Evenings", "weekday mornings"): you only need to arrive 30 min before they end,
  * because there is no real closing time to finish before.
  * Everything else: the whole visit must finish before closing.
+ *
+ * | Kind                         | Must start by    |
+ * | ---------------------------- | ---------------- |
+ * | Restaurant                   | close - 30       |
+ * | Vague hours ("Evenings")     | close - 30       |
+ * | Everything else, fixed hours | close - duration |
+ *
+ * Example: restaurant open 12:00-15:00 and 19:00-22:30, arrive 14:40.
+ *   Meal shift: 14:40 is before 15:00, so `from` stays 14:40 (it does not jump to 19:00).
+ *   Lunch window: start 14:40, latest 14:30. Doesn't fit, try the next window.
+ *   Dinner window: start max(14:40, 19:00) = 19:00, latest 22:00. Fits, returns 19:00.
+ * A museum open 12:00-15:00 with a 90 min visit must start by 13:30, so arriving at 14:40 returns null.
+ * Any wait before the returned start shows in the UI as "Free time".
  */
 function earliestStart(place: Place, arrive: number, weekday: number): number | null {
   const isMeal = place.type === "restaurant";
   const mustFinish = !isMeal && place.hours.kind === "fixed";
   let from = arrive;
   if (isMeal) {
+    // Arriving before 15:00 counts as lunch (not before 12:00); later counts as dinner (not before 19:00).
     from = Math.max(from, from < 15 * 60 ? LUNCH_FROM : DINNER_FROM);
   }
 
@@ -94,7 +108,9 @@ function earliestStart(place: Place, arrive: number, weekday: number): number | 
   if (!windows) {
     return from;
   }
+  // Try each opening window in order. If one is too late, fall through to the next one.
   for (const w of [...windows].sort((a, b) => a.open - b.open)) {
+    // If we arrive before this window opens, wait until it opens.
     const start = Math.max(from, w.open);
     const latestOk = mustFinish ? w.close - place.durationMinutes : w.close - 30;
     if (start <= latestOk) {
@@ -132,6 +148,9 @@ export function scheduleDay(planned: PlannedDay, date: string, bases: BaseCity[]
       continue;
     }
     const issues = placeIssues(place);
+    // unshift puts each error at the front, so errors come before warnings and the LAST failed check
+    // ends up first. Example: Uffizi on a Monday from a Rome base gets
+    // ["Closed or no time left on Monday...", "Florence is too far from Rome...", ...warnings and info].
     const fail = (message: string) => issues.unshift({ severity: "error", message });
 
     if (place.excludedReason) {
@@ -161,7 +180,9 @@ export function scheduleDay(planned: PlannedDay, date: string, bases: BaseCity[]
     prev = place;
   }
 
-  // Whole-day checks
+  // Whole-day checks.
+  // Base cities are left out, so a Rome-base day with a Florence stop does not trigger this
+  // (that stop already fails the "too far" check above).
   const awayCities = new Set(stops.map((s) => s.place.city).filter((c) => !isBaseCity(c)));
   if (awayCities.size > 1) {
     dayIssues.push({
@@ -211,7 +232,11 @@ export function scheduleTrip(plan: Plan, startDate: string): ScheduledTrip {
 
 // ---------- Helpers for the repair loop and the UI ----------
 
-/** Plain-language list of errors, phrased for the LLM to fix. */
+/**
+ * Plain-language list of errors, phrased for the LLM to fix. One line per error, with the place id
+ * so the LLM knows exactly which stop to replace:
+ *   "Day 1, Uffizi Gallery (place_026): Closed or no time left on Monday (hours: Tues-Sun 8:15-18:50)."
+ */
 export function errorReport(trip: ScheduledTrip): string[] {
   const out = trip.issues.filter((i) => i.severity === "error").map((i) => i.message);
   trip.days.forEach((day, d) => {
@@ -247,6 +272,8 @@ export function dropInvalidStops(plan: Plan, startDate: string): { plan: Plan; r
       }
     }
     const valid = trip.days[d].stops.filter((stop) => {
+      // find() keeps only the first error, which is the last check that failed (see `fail` above).
+      // So a stop with two errors is listed once, e.g. "Uffizi Gallery: Closed or no time left on Monday...".
       const error = stop.issues.find((i) => i.severity === "error");
       if (error) {
         removed.push(`${stop.place.name}: ${error.message}`);
